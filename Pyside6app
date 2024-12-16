@@ -2,6 +2,7 @@ import numpy, pandas
 import PySide6
 from PySide6.QtWidgets import QApplication, QWidget
 import sys
+import os
 
 app = QApplication(sys.argv)
 window = QWidget()
