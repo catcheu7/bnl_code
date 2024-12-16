@@ -1,5 +1,5 @@
 import PySide6
-from PySde6.QWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QWidget
 
 import sys
 
