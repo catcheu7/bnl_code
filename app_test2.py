@@ -7,4 +7,4 @@ window.show()
 
 app.exec()
 
-#New version - December 16, 2024
+#New version - December 16
