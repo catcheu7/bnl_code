@@ -8,3 +8,4 @@ window.show()
 app.exec()
 
 #Created: December 16, 2024 - new version
+#Use for tutorial only
