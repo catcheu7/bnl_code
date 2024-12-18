@@ -5,7 +5,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("GDS Voxels")
+        self.setWindowTitle("GDS Voxels v. 0.1")
         wid = QWidget()
 
         gdsbutton = QPushButton("Load Design")
