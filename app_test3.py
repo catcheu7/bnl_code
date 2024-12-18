@@ -6,7 +6,14 @@ class MainWindow(QMainWindow):
         super.__init__
 
         gdsbutton = QPushButton("Load Design")
-        gdsbutton.clicked.event
+        gdsbutton.clicked.connect(self.button_clicked)
+        self.setCentralWidget(gdsbutton)
+
+    def button_clicked(self,s):
+        print("clicked")
+        lwin = QDialog(self)
+        lwin.setWindowTitle("Loading")
+        lwin.exec()
 
 app = QApplication(sys.argv)
 window = QWidget()
