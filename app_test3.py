@@ -1,5 +1,9 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super.__init__
 
 app = QApplication(sys.argv)
 window = QWidget()
