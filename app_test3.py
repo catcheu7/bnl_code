@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPush
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        super.__init__
+        super().__init__()
 
         gdsbutton = QPushButton("Load Design")
         gdsbutton.clicked.connect(self.button_clicked)
