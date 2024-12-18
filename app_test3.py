@@ -5,7 +5,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super.__init__
 
-        gds = QPushButton("Load GDS")
+        gdsbutton = QPushButton("GDS Load")
 
 app = QApplication(sys.argv)
 window = QWidget()
