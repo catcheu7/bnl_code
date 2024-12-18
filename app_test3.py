@@ -5,7 +5,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Testing")
+        self.windowTitle("testing window")
 
         gdsbutton = QPushButton("Load Design")
         gdsbutton.clicked.connect(self.button_clicked)
