@@ -5,7 +5,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.windowTitle("testing window")
+        self.setWindowTitle("testing window")
         wid = QWidget()
 
         gdsbutton = QPushButton("Load Design")
@@ -19,6 +19,7 @@ class MainWindow(QMainWindow):
         lwin.exec()
 
 app = QApplication(sys.argv)
+
 window = MainWindow()
 window.show()
 
