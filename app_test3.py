@@ -1,9 +1,11 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow
+from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super.__init__
+
+        test = QPushButton()
 
 app = QApplication(sys.argv)
 window = QWidget()
