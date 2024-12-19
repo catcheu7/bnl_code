@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton
+from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -14,7 +14,7 @@ class MainWindow(QMainWindow):
 
     def button_clicked(self,s):
         print("clicked")
-        lwin = QDialog(self)
+        lwin = QFileDialog.getOpenFileName(self)
         lwin.setWindowTitle("Loading")
         lwin.exec()
 
