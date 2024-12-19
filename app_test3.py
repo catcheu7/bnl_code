@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPush
 
 class GDS():
     def loadgds(setter):
+        print(setter)
         test = gdspy.GdsLibrary(infile = setter)
         cell = test.top_level()[0]
         polys = cell.get_polygons(by_spec = True)
