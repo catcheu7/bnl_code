@@ -4,9 +4,12 @@ import matplotlib.pyplot as plt
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog
 
 class GDS():
-    test = gdspy.GdsLibrary(infile = 'Test_GDS_for_GISAXS.gds')
-    cell = test.top_level()[0]
-    polys = cell.get_polygons(by_spec = True)
+    def loadgds(setter):
+        test = gdspy.GdsLibrary(infile = setter)
+        print(setter)
+        cell = test.top_level()[0]
+        polys = cell.get_polygons(by_spec = True)
+#polys
 
 class MainWindow(QMainWindow):
     def __init__(self):
