@@ -1,4 +1,5 @@
 import sys
+import gdspy, matplotlib.pyplot as plt, numpy
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog
 
 class MainWindow(QMainWindow):
@@ -14,7 +15,7 @@ class MainWindow(QMainWindow):
 
     def button_clicked(self,s):
         print("clicked")
-        lwin,load = QFileDialog.getOpenFileName(self,"GDS Load",filter = 'GDS Files (*.gds)')
+        lwin,load = QFileDialog.getOpenFileName(self,'GDS Load',filter = 'GDS files (*.gds)')
         lwin.exec()
 
 app = QApplication(sys.argv)
