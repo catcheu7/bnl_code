@@ -1,6 +1,7 @@
 import sys
 import gdspy,numpy
 import matplotlib.pyplot as plt
+import ipython
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog
 
 class GDS():
