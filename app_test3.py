@@ -14,8 +14,7 @@ class MainWindow(QMainWindow):
 
     def button_clicked(self,s):
         print("clicked")
-        lwin = QFileDialog.getOpenFileName(self)
-        lwin.setWindowTitle("Loading")
+        lwin = QFileDialog.getOpenFileName(self,'GDS Load')
         lwin.exec()
 
 app = QApplication(sys.argv)
