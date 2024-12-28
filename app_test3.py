@@ -11,9 +11,6 @@ class GDS():
         polys = cell.get_polygons(by_spec = True)
         bound = cell.get_bounding_box()
         diff = bound[:,None] - bound[None,:]
-#diff
-#bound
-#polys
 
 class MainWindow(QMainWindow):
     def __init__(self):
