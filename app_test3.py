@@ -11,6 +11,7 @@ class GDS():
         polys = cell.get_polygons(by_spec = True)
         bound = cell.get_bounding_box()
         diff = bound[:,None] - bound[None,:]
+        return bound, diff
 
     def graphingbound(diff,bound):
         plt.ioff()
