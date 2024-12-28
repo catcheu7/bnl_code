@@ -9,6 +9,10 @@ class GDS():
         test = gdspy.GdsLibrary(infile = setter)
         cell = test.top_level()[0]
         polys = cell.get_polygons(by_spec = True)
+        bound = cell.get_bounding_box()
+        diff = bound[:,None] - bound[None,:]
+#diff
+#bound
 #polys
 
 class MainWindow(QMainWindow):
