@@ -23,6 +23,13 @@ class GDS():
 
     def layered():
         count = 0
+        for a,coords in polys.items():
+        colors = ['black','red','blue','magenta','green','orange']
+        for b in coords:
+            m = Polygon(b)
+            plt.fill(*m.exterior.xy,color = colors[count])
+        count +=1
+        plt.savefig('test.png',dpi = 100)
 
 class MainWindow(QMainWindow):
     def __init__(self):
