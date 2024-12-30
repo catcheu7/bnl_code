@@ -42,6 +42,8 @@ class MainWindow(QMainWindow):
         gdsbutton.clicked.connect(self.button_clicked)
         self.setCentralWidget(gdsbutton)
 
+        inputbound = QDialog()
+
     def button_clicked(self,s):
         print("clicked")
         lwin,setter = QFileDialog.getOpenFileName(self,'GDS Loader',filter = 'GDS (*.gds)')
