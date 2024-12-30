@@ -2,7 +2,8 @@ import sys
 import gdspy,numpy
 import matplotlib.pyplot as plt
 import ipython
-from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog
+from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit
+from PySide6.QtGui import QDoubleValidator
 
 class GDS():
     def loadgds(setter):
@@ -42,7 +43,8 @@ class MainWindow(QMainWindow):
         gdsbutton.clicked.connect(self.button_clicked)
         self.setCentralWidget(gdsbutton)
 
-        inputbound = QDialog()
+        bound = QLineEdit()
+        bound.set_validator(QDoubleValidator)
 
     def button_clicked(self,s):
         print("clicked")
