@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(gdsbutton)
 
         bound = QLineEdit()
-        bound.set_validator(QDoubleValidator)
+        bound.setValidator(QDoubleValidator())
 
     def button_clicked(self,s):
         print("clicked")
