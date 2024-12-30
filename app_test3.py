@@ -1,8 +1,8 @@
 import sys
-import gdspy,numpy
+#import gdspy,numpy
 import matplotlib.pyplot as plt
-import ipython
-from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit
+#import ipython
+from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout
 from PySide6.QtGui import QDoubleValidator
 
 class GDS():
@@ -25,11 +25,11 @@ class GDS():
     def layered():
         count = 0
         for a,coords in polys.items():
-        colors = ['black','red','blue','magenta','green','orange']
-        for b in coords:
-            m = Polygon(b)
-            plt.fill(*m.exterior.xy,color = colors[count])
-        count +=1
+            colors = ['black','red','blue','magenta','green','orange']
+            for b in coords:
+                m = Polygon(b)
+                plt.fill(*m.exterior.xy,color = colors[count])
+            count +=1
         plt.savefig('test.png',dpi = 100)
 
 class MainWindow(QMainWindow):
@@ -41,10 +41,28 @@ class MainWindow(QMainWindow):
 
         gdsbutton = QPushButton("Load Design")
         gdsbutton.clicked.connect(self.button_clicked)
-        self.setCentralWidget(gdsbutton)
+        #self.setCentralWidget(gdsbutton)
 
-        bound = QLineEdit()
-        bound.setValidator(QDoubleValidator())
+        bound_x1 = QLineEdit()
+        bound_x1.setValidator(QDoubleValidator())
+
+        bound_x2 = QLineEdit()
+        bound_x2.setValidator(QDoubleValidator())
+
+        bound_y1 = QLineEdit()
+        bound_y1.setValidator(QDoubleValidator())
+
+        bound_y2 = QLineEdit()
+        bound_y2.setValidator(QDoubleValidator())
+
+        inwidget = [gdsbutton,bound_x2,bound_x1,bound_y1,bound_y2]
+
+        layoutin = QFormLayout()
+
+        for widget in inwidget:
+            layoutin.addRow(widget)
+
+        wid.setLayout(layoutin)
 
     def button_clicked(self,s):
         print("clicked")
