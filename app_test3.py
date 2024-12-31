@@ -43,16 +43,16 @@ class MainWindow(QMainWindow):
         gdsbutton.clicked.connect(self.button_clicked)
         #self.setCentralWidget(gdsbutton)
 
-        bound_x1 = QLineEdit()
+        bound_x1 = QLineEdit('X: Starting')
         bound_x1.setValidator(QDoubleValidator())
 
-        bound_x2 = QLineEdit()
+        bound_x2 = QLineEdit('X: Ending')
         bound_x2.setValidator(QDoubleValidator())
 
-        bound_y1 = QLineEdit()
+        bound_y1 = QLineEdit('Y: Starting')
         bound_y1.setValidator(QDoubleValidator())
 
-        bound_y2 = QLineEdit()
+        bound_y2 = QLineEdit('Y: Ending')
         bound_y2.setValidator(QDoubleValidator())
 
         inwidget = [gdsbutton,bound_x2,bound_x1,bound_y1,bound_y2]
