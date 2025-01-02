@@ -40,23 +40,23 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("GDS Voxels v.0.01")
         wid = QWidget()
 
-        gdsbutton = QPushButton("Load Design")
+        gdsbutton = QPushButton(self,"Load Design")
         gdsbutton.clicked.connect(self.button_clicked)
         #self.setCentralWidget(gdsbutton)
 
-        bound_x1 = QLineEdit(self,'X: Starting')
+        bound_x1 = QLineEdit()
         x1 = QLabel('X: Starting')
         bound_x1.setValidator(QDoubleValidator())
 
-        bound_x2 = QLineEdit(self,'X: Ending')
+        bound_x2 = QLineEdit()
         x2 = QLabel('X: Ending')
         bound_x2.setValidator(QDoubleValidator())
 
-        bound_y1 = QLineEdit('self,Y: Starting')
+        bound_y1 = QLineEdit()
         y1 = QLabel('Y: Starting')
         bound_y1.setValidator(QDoubleValidator())
 
-        bound_y2 = QLineEdit(self,'Y: Ending')
+        bound_y2 = QLineEdit()
         y2 = QLabel('Y: Ending')
         bound_y2.setValidator(QDoubleValidator())
 
