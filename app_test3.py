@@ -22,6 +22,7 @@ class GDS():
         plt.axis('off')
         plt.xlim(bound[0][0],bound[1][0])
         plt.ylim(bound[0][1],bound[1][1])
+        return fig
 
     def layered():
         count = 0
