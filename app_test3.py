@@ -76,10 +76,10 @@ class MainWindow(QMainWindow):
         lwin,setter = QFileDialog.getOpenFileName(self,'GDS Loader',filter = 'GDS (*.gds)')
         bound,diff = GDS.loadgds(lwin)
         fig2 = GDS.graphingbound(diff,bound)
-        xstart = bound_x1.text()
-        xend = bound_x2.text()
-        ystart = bound_y1.text()
-        yend = bound_y2.text()
+        xstart = self.bound_x1.text()
+        xend = self.bound_x2.text()
+        ystart = self.bound_y1.text()
+        yend = self.bound_y2.text()
 
 app = QApplication(sys.argv)
 
