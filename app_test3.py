@@ -45,21 +45,21 @@ class MainWindow(QMainWindow):
         gdsbutton.clicked.connect(self.button_clicked)
         #self.setCentralWidget(gdsbutton)
 
-        bound_x1 = QLineEdit()
+        self.bound_x1 = QLineEdit()
         x1 = QLabel('X: Starting')
-        bound_x1.setValidator(QDoubleValidator())
+        self.bound_x1.setValidator(QDoubleValidator())
 
-        bound_x2 = QLineEdit()
+        self.bound_x2 = QLineEdit()
         x2 = QLabel('X: Ending')
-        bound_x2.setValidator(QDoubleValidator())
+        self.bound_x2.setValidator(QDoubleValidator())
 
-        bound_y1 = QLineEdit()
+        self.bound_y1 = QLineEdit()
         y1 = QLabel('Y: Starting')
-        bound_y1.setValidator(QDoubleValidator())
+        self.bound_y1.setValidator(QDoubleValidator())
 
-        bound_y2 = QLineEdit()
+        self.bound_y2 = QLineEdit()
         y2 = QLabel('Y: Ending')
-        bound_y2.setValidator(QDoubleValidator())
+        self.bound_y2.setValidator(QDoubleValidator())
 
         inwidget = [gdsbutton,x1,bound_x1,x2,bound_x2,y1,bound_y1,y2,bound_y2]
 
