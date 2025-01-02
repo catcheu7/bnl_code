@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("GDS Voxels v.0.01")
         wid = QWidget()
 
-        gdsbutton = QPushButton(self,"Load Design")
+        gdsbutton = QPushButton("Load Design")
         gdsbutton.clicked.connect(self.button_clicked)
         #self.setCentralWidget(gdsbutton)
 
