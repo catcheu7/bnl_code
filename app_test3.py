@@ -2,7 +2,7 @@ import sys
 import gdspy,numpy
 import matplotlib.pyplot as plt
 #import ipython
-from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout
+from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
 
 class GDS():
@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
         #self.setCentralWidget(gdsbutton)
 
         bound_x1 = QLineEdit(self,'X: Starting')
+        x1 = QLabel('X: Starting')
         bound_x1.setValidator(QDoubleValidator())
 
         bound_x2 = QLineEdit(self,'X: Ending')
@@ -56,7 +57,7 @@ class MainWindow(QMainWindow):
         bound_y2 = QLineEdit(self,'Y: Ending')
         bound_y2.setValidator(QDoubleValidator())
 
-        inwidget = [gdsbutton,bound_x2,bound_x1,bound_y1,bound_y2]
+        inwidget = [gdsbutton,x1,bound_x1,bound_x2,bound_y1,bound_y2]
 
         layoutin = QFormLayout()
 
