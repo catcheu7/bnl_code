@@ -49,15 +49,18 @@ class MainWindow(QMainWindow):
         bound_x1.setValidator(QDoubleValidator())
 
         bound_x2 = QLineEdit(self,'X: Ending')
+        x2 = QLabel('X: Ending')
         bound_x2.setValidator(QDoubleValidator())
 
         bound_y1 = QLineEdit('self,Y: Starting')
+        y1 = QLabel('Y: Starting')
         bound_y1.setValidator(QDoubleValidator())
 
         bound_y2 = QLineEdit(self,'Y: Ending')
+        y2 = QLabel('Y: Ending')
         bound_y2.setValidator(QDoubleValidator())
 
-        inwidget = [gdsbutton,x1,bound_x1,bound_x2,bound_y1,bound_y2]
+        inwidget = [gdsbutton,x1,bound_x1,x2,bound_x2,y1,bound_y1,y2,bound_y2]
 
         layoutin = QFormLayout()
 
