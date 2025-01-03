@@ -105,6 +105,7 @@ class MainWindow(QMainWindow):
             break
         else:
             figcustom = GDS.graphingbound(diff,bound)
+            GDS.layered(bound1,figcustom)
 
 app = QApplication(sys.argv)
 
