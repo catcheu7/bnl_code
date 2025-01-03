@@ -34,6 +34,10 @@ class GDS():
             count +=1
         plt.savefig('test.png',dpi = 100)
 
+    def checkbounds(x1,x2,y1,y2):
+        if x1 < bound[0][0] or x2 > bound[0][1]:
+            print('Out of range (x)')
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
