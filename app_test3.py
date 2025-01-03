@@ -58,6 +58,10 @@ class GDS():
             matimg = imreader(a)/255
             matlist += (matimg,)
         return matlist
+    
+    def loadsample(layers):
+        samplist = ()
+        return sample
 
 class MainWindow(QMainWindow):
     def __init__(self):
