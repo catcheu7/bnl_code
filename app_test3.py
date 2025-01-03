@@ -64,6 +64,7 @@ class GDS():
         for b in layers:
             samp = np.broadcast(5,b.shape()[0],b.shape()[1])
             samplist += (samp,)
+        sample = np.concatenate(samplist,axis = 0)
         return sample
 
 class MainWindow(QMainWindow):
