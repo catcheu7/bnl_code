@@ -61,6 +61,9 @@ class GDS():
     
     def loadsample(layers):
         samplist = ()
+        for b in layers:
+            samp = np.broadcast(5,b.shape()[0],b.shape()[1])
+            samplist += (samp,)
         return sample
 
 class MainWindow(QMainWindow):
