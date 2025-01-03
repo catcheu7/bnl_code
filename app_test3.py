@@ -79,6 +79,8 @@ class MainWindow(QMainWindow):
         xend = self.bound_x2.text()
         ystart = self.bound_y1.text()
         yend = self.bound_y2.text()
+        bound = [(xstart,ystart),(ystart,yend)]
+        diff = [(xend - xstart),(yend - ystart)]
 
 app = QApplication(sys.argv)
 
