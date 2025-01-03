@@ -39,6 +39,7 @@ class GDS():
             count +=1
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
+            fig.savefig(layername,dpi = 100)
 
     def checkbounds(x1,x2,y1,y2,bound,diff):
         if x1 < bound[0][0] or x2 > bound[0][1]:
