@@ -24,7 +24,7 @@ class GDS():
         plt.ylim(bound[0][1],bound[1][1])
         return fig
 
-    def layered(bound):
+    def layered(bound,fig):
         count = 0
         filenames = []
         for a,coords in polys.items():
@@ -37,6 +37,8 @@ class GDS():
                 cor = Polygon(list(zip(scaled[0],scaled[1])))
                 plt.fill(*m.exterior.xy,color = colors[count])
             count +=1
+            layername = 'layer' + str(count) + '.png'
+            filenames.append(layername)
 
     def checkbounds(x1,x2,y1,y2,bound,diff):
         if x1 < bound[0][0] or x2 > bound[0][1]:
