@@ -30,6 +30,7 @@ class GDS():
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
                 m = Polygon(b)
+                sepcoord = np.array(m.exterior.xy)
                 plt.fill(*m.exterior.xy,color = colors[count])
             count +=1
         plt.savefig('test.png',dpi = 100)
