@@ -24,13 +24,17 @@ class GDS():
         plt.ylim(bound[0][1],bound[1][1])
         return fig
 
-    def layered():
+    def layered(bound):
         count = 0
         for a,coords in polys.items():
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
                 m = Polygon(b)
                 sepcoord = np.array(m.exterior.xy)
+                adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
+                scaled = adjust//np.array([[xsize, ysize]]).transpose()
+                #print(scaled)
+                cor = Polygon(list(zip(scaled[0],scaled[1])))
                 plt.fill(*m.exterior.xy,color = colors[count])
             count +=1
         plt.savefig('test.png',dpi = 100)
