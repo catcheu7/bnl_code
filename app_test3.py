@@ -34,7 +34,7 @@ class GDS():
             count +=1
         plt.savefig('test.png',dpi = 100)
 
-    def checkbounds(x1,x2,y1,y2):
+    def checkbounds(x1,x2,y1,y2,bound,diff):
         if x1 < bound[0][0] or x2 > bound[0][1]:
             self.errormes.textChanged('Error: X out of bounds!')
             return False
@@ -88,11 +88,11 @@ class MainWindow(QMainWindow):
         self.layoutin.addRow(self.errormes)
         bound1 = [(xstart,ystart),(xend,yend)]
         diff1 = [(xend - xstart),(yend - ystart)]
-        booleans = GDS.checkbounds(xstart,xend,ystart,yend,bound1,diff1)
-        if booleans == False:
+        boolcheck = GDS.checkbounds(xstart,xend,ystart,yend,bound1,diff1)
+        if boolcheck == False:
             break
         else:
-            figcustom = GDS.graphingbound(diff1,bound1)
+            figcustom = GDS.graphingbound(diff,bound)
 
 app = QApplication(sys.argv)
 
