@@ -56,6 +56,7 @@ class GDS():
         for a in layers:
             matimg = imreader(a)/255
             matlist += (matimg,)
+        return matlist
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -112,6 +113,7 @@ class MainWindow(QMainWindow):
         else:
             figcustom = GDS.graphingbound(diff,bound)
             GDS.layered(bound1,figcustom)
+            matlist = GDS.loadlayers(layers)
 
 app = QApplication(sys.argv)
 
