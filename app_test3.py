@@ -17,7 +17,7 @@ class GDS():
 
     def graphingbound(diff,bound):
         plt.ioff()
-        fig = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = False)
+        fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('off')
         plt.xlim(bound[0][0],bound[1][0])
