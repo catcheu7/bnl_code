@@ -36,8 +36,13 @@ class GDS():
 
     def checkbounds(x1,x2,y1,y2,bound,diff):
         if x1 < bound[0][0] or x2 > bound[0][1]:
-            self.errormes.textChanged('Error: X out of bounds!')
+            self.errormes.setText('Error: X out of bounds!')
             return False
+        elif y1 < bound[1][0] or y2 > bound[1][1]:
+            self.errormes.setText('Error: Y out of bounds!')
+            return False
+        else:
+            return True
 
 class MainWindow(QMainWindow):
     def __init__(self):
