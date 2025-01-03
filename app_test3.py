@@ -131,6 +131,7 @@ class MainWindow(QMainWindow):
             figcustom = GDS.graphingbound(diff,bound)
             layers = GDS.layered(bound1,figcustom)
             matlist = GDS.loadlayers(layers)
+            sample = GDS.loadsample(matlist)
 
 app = QApplication(sys.argv)
 
