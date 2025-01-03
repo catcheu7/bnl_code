@@ -36,7 +36,7 @@ class GDS():
 
     def checkbounds(x1,x2,y1,y2):
         if x1 < bound[0][0] or x2 > bound[0][1]:
-            print('Out of range (x)')
+            self.errormes.textChanged('Error: X out of bounds!')
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -67,10 +67,10 @@ class MainWindow(QMainWindow):
 
         inwidget = [gdsbutton,x1,bound_x1,x2,bound_x2,y1,bound_y1,y2,bound_y2]
 
-        layoutin = QFormLayout()
+        self.layoutin = QFormLayout()
 
         for widget in inwidget:
-            layoutin.addRow(widget)
+            self.layoutin.addRow(widget)
 
         wid.setLayout(layoutin)
         self.setCentralWidget(wid)
@@ -83,6 +83,8 @@ class MainWindow(QMainWindow):
         xend = self.bound_x2.text()
         ystart = self.bound_y1.text()
         yend = self.bound_y2.text()
+        self.errormes = QLabel()
+        self.layoutin.addRow(self.errormes)
         bound = [(xstart,ystart),(xend,yend)]
         diff = [(xend - xstart),(yend - ystart)]
         figcustom = GDS.graphingbound(diff,bound)
