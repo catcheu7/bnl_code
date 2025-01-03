@@ -75,7 +75,6 @@ class MainWindow(QMainWindow):
         print("clicked")
         lwin,setter = QFileDialog.getOpenFileName(self,'GDS Loader',filter = 'GDS (*.gds)')
         bound,diff = GDS.loadgds(lwin)
-        fig2 = GDS.graphingbound(diff,bound)
         xstart = self.bound_x1.text()
         xend = self.bound_x2.text()
         ystart = self.bound_y1.text()
