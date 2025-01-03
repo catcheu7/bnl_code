@@ -40,6 +40,7 @@ class GDS():
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             fig.savefig(layername,dpi = 100)
+        return filenames
 
     def checkbounds(x1,x2,y1,y2,bound,diff):
         if x1 < bound[0][0] or x2 > bound[0][1]:
@@ -112,7 +113,7 @@ class MainWindow(QMainWindow):
             break
         else:
             figcustom = GDS.graphingbound(diff,bound)
-            GDS.layered(bound1,figcustom)
+            layers = GDS.layered(bound1,figcustom)
             matlist = GDS.loadlayers(layers)
 
 app = QApplication(sys.argv)
