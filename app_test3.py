@@ -50,6 +50,12 @@ class GDS():
             return False
         else:
             return True
+        
+    def loadlayers(layers):
+        matlist = ()
+        for a in layers:
+            matimg = imreader(a)/255
+            matlist += (matimg,)
 
 class MainWindow(QMainWindow):
     def __init__(self):
