@@ -88,7 +88,7 @@ class MainWindow(QMainWindow):
         self.layoutin.addRow(self.errormes)
         bound1 = [(xstart,ystart),(xend,yend)]
         diff1 = [(xend - xstart),(yend - ystart)]
-        boolcheck = GDS.checkbounds(xstart,xend,ystart,yend,bound1,diff1)
+        boolcheck = GDS.checkbounds(xstart,xend,ystart,yend,bound,diff)
         if boolcheck == False:
             break
         else:
