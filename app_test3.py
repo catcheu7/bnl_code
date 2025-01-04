@@ -75,9 +75,10 @@ class GDS():
         sample = np.concatenate(samplist,axis = 0)
         return sample
     
-    def voxels(sample):
+    def graph(sample):
         ax = plt.figure().add_subplot()
         ax.voxels(sample)
+        return ax
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -136,6 +137,7 @@ class MainWindow(QMainWindow):
             layers = GDS.layered(bound1,figcustom)
             matlist = GDS.loadlayers(layers)
             sample = GDS.loadsample(matlist)
+            voxels = GDS.graph(sample)
 
 app = QApplication(sys.argv)
 
