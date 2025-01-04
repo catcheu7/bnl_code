@@ -75,9 +75,9 @@ class GDS():
         sample = np.concatenate(samplist,axis = 0)
         return sample
     
-    def voxelplot(sample):
+    def voxels(sample):
         ax = plt.figure().add_subplot()
-        ax.voxel(sample)
+        ax.voxels(sample)
 
 class MainWindow(QMainWindow):
     def __init__(self):
