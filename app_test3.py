@@ -43,10 +43,15 @@ class GDS():
         return filenames
 
     def checkbounds(x1,x2,y1,y2,bound,diff):
-        if x1 < bound[0][0] or x2 > bound[0][1]:
+        if x1 < bound[0][0] or x1 > bound[0][1] or x2 < bound[1][0] or x2 > bound[0][1]:
             self.errormes.setText('Error: X out of bounds!')
             return False
-        elif y1 < bound[1][0] or y2 > bound[1][1]:
+        elif x2 < x1 or x1 > x2:
+            self.errormes.setText('Error: Invalid Range')
+        elif y2 < y1 or y1 > y2:
+            self.errormes.setText('Error: Invalid Range!')
+            return False
+        elif y1 < bound[1][0] or y1 > bound[1][1] or y2 < bound[1][0] or y2 > bound[1][1]:
             self.errormes.setText('Error: Y out of bounds!')
             return False
         else:
