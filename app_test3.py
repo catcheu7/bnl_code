@@ -33,11 +33,13 @@ class GDS():
             for b in coords:
                 m = Polygon(b)
                 t = np.array(m.exterior.xy)
-                adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
-                scaled = adjust//np.array([[0.5,0.5]]).transpose()
-                cor = Polygon(list(zip(scaled[0],scaled[1])))
-                print(cor)
-                plt.fill(*cor.exterior.xy,color = colors[count])
+                for i in np.arange(0,t.shape()[1]):
+                    if bound[0][0] < t[0][i] < bound[1][0] and bound[0][1] < t[1][i] < bound[1][1]:
+                        adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
+                        scaled = adjust//np.array([[0.5,0.5]]).transpose()
+                        cor = Polygon(list(zip(scaled[0],scaled[1])))
+                        print(cor)
+                        plt.fill(*cor.exterior.xy,color = colors[count])
             count +=1
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
