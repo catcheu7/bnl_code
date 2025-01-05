@@ -1,6 +1,7 @@
 import sys
 import gdspy,numpy as np
 import matplotlib.pyplot as plt
+from shapely import Polygon
 #import ipython
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
@@ -24,7 +25,7 @@ class GDS():
         plt.ylim(bound[0][1],bound[1][1])
         return fig
 
-    def layered(bound,fig):
+    def layered(bound,fig,polys):
         count = 0
         filenames = []
         for a,coords in polys.items():
@@ -161,7 +162,7 @@ class MainWindow(QMainWindow):
             print('Error')
         else:
             figcustom = GDS.graphingbound(diff,bound)
-            layers = GDS.layered(bound1,figcustom)
+            layers = GDS.layered(bound1,figcustom,polys)
             matlist = GDS.loadlayers(layers)
             sample = GDS.loadsample(matlist)
             return sample
