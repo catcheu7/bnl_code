@@ -21,8 +21,8 @@ class GDS():
         fig = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('off')
-        plt.xlim(bound[0][0],bound[1][0])
-        plt.ylim(bound[0][1],bound[1][1])
+        plt.xlim(0,diff[1][0][0])
+        plt.ylim(0,diff[1][0][1])
         return fig
 
     def layered(bound,fig,polys):
@@ -32,7 +32,7 @@ class GDS():
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
                 m = Polygon(b)
-                sepcoord = np.array(m.exterior.xy)
+                t = np.array(m.exterior.xy)
                 adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
                 scaled = adjust//np.array([[xsize, ysize]]).transpose()
                 cor = Polygon(list(zip(scaled[0],scaled[1])))
