@@ -80,6 +80,13 @@ class GDS():
         ax = plt.figure().add_subplot()
         ax.voxels(sample)
         return ax
+    
+class voxelview(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle('View')
+        graph = MainWindow.button_clicked().voxels
 
 class MainWindow(QMainWindow):
     def __init__(self):
