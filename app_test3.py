@@ -14,7 +14,7 @@ class GDS():
         bound = cell.get_bounding_box()
         diff = bound[:,None] - bound[None,:]
         print(diff)
-        return bound, diff
+        return bound, diff,polys
 
     def graphingbound(diff,bound):
         plt.ioff()
@@ -147,7 +147,7 @@ class MainWindow(QMainWindow):
     def button_clicked(self,s):
         print("clicked")
         lwin,setter = QFileDialog.getOpenFileName(self,'GDS Loader',filter = 'GDS (*.gds)')
-        bound,diff = GDS.loadgds(lwin)
+        bound,diff,polys = GDS.loadgds(lwin)
         xstart = float(self.bound_x1.text())
         xend = float(self.bound_x2.text())
         ystart = float(self.bound_y1.text())
