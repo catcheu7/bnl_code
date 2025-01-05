@@ -87,7 +87,7 @@ class voxelview(QWidget):
 
         self.setWindowTitle('View')
         graph = MainWindow.button_clicked()
-        GDS.graph(graph)
+        ax = GDS.graph(graph)
 
 class MainWindow(QMainWindow):
     def __init__(self):
