@@ -132,7 +132,7 @@ class MainWindow(QMainWindow):
         for widget in inwidget:
             self.layoutin.addRow(widget)
 
-        wid.setLayout(layoutin)
+        wid.setLayout(self.layoutin)
         self.setCentralWidget(wid)
 
     def button_clicked(self,s):
