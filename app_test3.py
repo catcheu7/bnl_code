@@ -57,7 +57,7 @@ class GDS():
             self.errormes.setText('Error: Y out of bounds!')
             return False
         else:
-            self.errormes.setTest('')
+            self.errormes.setText('')
             return True
         
     def loadlayers(layers):
