@@ -96,6 +96,7 @@ class graphsample(QWidget):
         graph = MainWindow.button_clicked()
         ax = GDS.graph(graph)
         self.setCentralWidget(ax)
+        self.show()
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -147,6 +148,7 @@ class MainWindow(QMainWindow):
         bound1 = [(xstart,ystart),(xend,yend)]
         diff1 = [(xend - xstart),(yend - ystart)]
         boolcheck = GDS.checkbounds(xstart,xend,ystart,yend,bound,diff)
+        sample = None
         if boolcheck == False:
             break
         else:
@@ -155,6 +157,10 @@ class MainWindow(QMainWindow):
             matlist = GDS.loadlayers(layers)
             sample = GDS.loadsample(matlist)
             return sample
+        
+        if sample != None:
+            win = graphsample()
+            win.exec()
 
 app = QApplication(sys.argv)
 
