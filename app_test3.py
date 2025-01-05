@@ -48,13 +48,12 @@ class GDS():
             return False
         elif x2 < bound[0][0] or x2 > bound[1][0]:
             self.errormes.setText('Error: Ending X out of bounds!')
-            return False
         elif x2 < x1 or x1 > x2:
             self.errormes.setText('Error: Invalid Range')
         elif y2 < y1 or y1 > y2:
             self.errormes.setText('Error: Invalid Range!')
             return False
-        elif y1 < bound[1][0] or y1 > bound[1][1] or y2 < bound[1][0] or y2 > bound[1][1]:
+        elif y1 < bound[0][1] or y1 > bound[1][1] or y2 < bound[0][1] or y2 > bound[1][1]:
             self.errormes.setText('Error: Y out of bounds!')
             return False
         else:
@@ -148,7 +147,6 @@ class MainWindow(QMainWindow):
         print("clicked")
         lwin,setter = QFileDialog.getOpenFileName(self,'GDS Loader',filter = 'GDS (*.gds)')
         bound,diff = GDS.loadgds(lwin)
-        print(bound)
         xstart = float(self.bound_x1.text())
         xend = float(self.bound_x2.text())
         ystart = float(self.bound_y1.text())
@@ -157,7 +155,7 @@ class MainWindow(QMainWindow):
         self.layoutin.addRow(self.errormes)
         bound1 = [(xstart,ystart),(xend,yend)]
         diff1 = [(xend - xstart),(yend - ystart)]
-        boolcheck = GDS.checkbounds(self,xstart,xend,ystart,yend,bound1,diff)
+        boolcheck = GDS.checkbounds(self,xstart,xend,ystart,yend,bound1,diff1)
         sample = None
         if boolcheck == False:
             print('Error')
