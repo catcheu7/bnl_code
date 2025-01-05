@@ -99,8 +99,9 @@ class graphsample(QWidget):
         super().__init__()
         self.setWindowTitle('Graph')
         graph = MainWindow.button_clicked()
-        ax = GDS.graph(graph)
-        self.setCentralWidget(ax)
+        ax = plt.figure().add_subplot()
+        voxels = GDS.graph(graph)
+        self.setCentralWidget(voxels)
         self.show()
 
 class MainWindow(QMainWindow):
