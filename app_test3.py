@@ -36,7 +36,7 @@ class GDS():
                 adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
                 scaled = adjust//np.array([[0.5, 0.5]]).transpose()
                 cor = Polygon(list(zip(scaled[0],scaled[1])))
-                plt.fill(*m.exterior.xy,color = colors[count])
+                plt.fill(*cor.exterior.xy,color = colors[count])
             count +=1
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
