@@ -125,7 +125,7 @@ class MainWindow(QMainWindow):
         y2 = QLabel('Y: Ending')
         self.bound_y2.setValidator(QDoubleValidator())
 
-        inwidget = [gdsbutton,x1,bound_x1,x2,bound_x2,y1,bound_y1,y2,bound_y2]
+        inwidget = [gdsbutton,x1,self.bound_x1,x2,self.bound_x2,y1,self.bound_y1,y2,self.bound_y2]
 
         self.layoutin = QFormLayout()
 
@@ -150,7 +150,7 @@ class MainWindow(QMainWindow):
         boolcheck = GDS.checkbounds(xstart,xend,ystart,yend,bound,diff)
         sample = None
         if boolcheck == False:
-            break
+            print('Error')
         else:
             figcustom = GDS.graphingbound(diff,bound)
             layers = GDS.layered(bound1,figcustom)
