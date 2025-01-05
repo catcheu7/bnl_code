@@ -40,6 +40,7 @@ class GDS():
                         cor = Polygon(list(zip(scaled[0],scaled[1])))
                         print(cor)
                         plt.fill(*cor.exterior.xy,color = colors[count])
+                        continue
             count +=1
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
