@@ -83,9 +83,12 @@ class GDS():
     
     def loadsample(layers):
         samplist = ()
+        count = 0
         for b in layers:
             samp = np.broadcast(5,b.shape[0],b.shape[1])
             samplist += (samp,)
+            print(count)
+            count += 1
         sample = np.concatenate(samplist,axis = 0)
         return sample
     
