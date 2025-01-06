@@ -90,6 +90,7 @@ class GDS():
             samplist += (samp,)
             print(count)
             count += 1
+        print(samplist)
         sample = np.concatenate(samplist,axis = 0)
         return sample
     
