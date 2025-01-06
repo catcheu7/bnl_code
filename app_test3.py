@@ -6,7 +6,7 @@ from shapely import Polygon
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
 from imageio import imread as imreader
-from matplotlib.backends.backend_qt5agg import FigureCanvasAgg
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 
 class GDS():
     def loadgds(setter):
@@ -108,12 +108,14 @@ class voxelview(QWidget):
         graph = MainWindow.button_clicked()
         ax = GDS.graph(graph)
 
-class graphsample(QWidget):
+class graphsample(FigureCanvasQTAgg):
     def __init__(self):
-        super().__init__()
+        
+        
+        super().__init__(ax)
+        ax = plt.figure().add_subplot()
         self.setWindowTitle('Graph')
         graph = MainWindow.button_clicked()
-        ax = plt.figure().add_subplot()
         voxels = GDS.graph(graph)
         self.setCentralWidget(voxels)
         self.show()
