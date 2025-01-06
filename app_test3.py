@@ -70,7 +70,6 @@ class GDS():
         matlist = ()
         for a in layers:
             matimg = imreader(a)/255
-            print(matimg.shape)
             matlist += (matimg,)
         return matlist
     
@@ -170,7 +169,7 @@ class MainWindow(QMainWindow):
         if boolcheck == False:
             print('Error')
         else:
-            figcustom = GDS.graphingbound(diff,bound)
+            figcustom = GDS.graphingbound(diff1,bound1)
             layers = GDS.layered(bound1,figcustom,polys)
             matlist = GDS.loadlayers(layers)
             sample = GDS.loadsample(matlist)
