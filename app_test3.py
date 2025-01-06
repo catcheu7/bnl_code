@@ -185,7 +185,7 @@ class MainWindow(QMainWindow):
             layers = GDS.layered(bound1,figcustom,polys)
             matlist = GDS.loadlayers(layers)
             sample = GDS.loadsample(matlist)
-            if sample != None:
+            if sample.all() != None:
                 win = graphsample()
                 win.show()
             return sample
