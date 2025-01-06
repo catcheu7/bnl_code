@@ -122,7 +122,7 @@ class graphwin(QWidget):
         self.setWindowTitle('Graph')
         graph = MainWindow.button_clicked()
         voxels = GDS.graph(graph)
-        self.setCentralWidget(voxels)
+        canvas.draw(voxels)
         self.show()
 
 class MainWindow(QMainWindow):
