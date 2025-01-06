@@ -19,11 +19,11 @@ class GDS():
 
     def graphingbound(diff,bound):
         plt.ioff()
-        fig = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = False)
+        fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('off')
-        plt.xlim(0,diff[1][0][0])
-        plt.ylim(0,diff[1][0][1])
+        plt.xlim(0,diff[0])
+        plt.ylim(0,diff[1])
         return fig
 
     def layered(bound,fig,polys):
@@ -42,6 +42,7 @@ class GDS():
                         print(cor)
                         plt.fill(*cor.exterior.xy,color = colors[count])
                         break
+            plt.clf()
             count +=1
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
