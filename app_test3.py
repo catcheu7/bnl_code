@@ -6,6 +6,7 @@ from shapely import Polygon
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
 from imageio import imread as imreader
+from matplotlib.backends.backend_qt5agg import FigureCanvasAgg
 
 class GDS():
     def loadgds(setter):
