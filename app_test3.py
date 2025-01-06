@@ -43,6 +43,7 @@ class GDS():
                         plt.fill(*cor.exterior.xy,color = colors[count])
                         break
             count +=1
+            print(count)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             fig.savefig(layername,dpi = 100)
