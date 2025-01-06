@@ -111,18 +111,15 @@ class voxelview(QWidget):
 class graphsample(FigureCanvasQTAgg):
     def __init__(self):
         
-        
         ax = plt.figure().add_subplot()
         super().__init__(ax)
-
+        
 class graphwin(QWidget):
-        def __init__(self):
-            super().__init__()
-            self.setWindowTitle('Graph')
-            graph = MainWindow.button_clicked()
-            voxels = GDS.graph(graph)
-            self.setCentralWidget(voxels)
-            self.show()
+        self.setWindowTitle('Graph')
+        graph = MainWindow.button_clicked()
+        voxels = GDS.graph(graph)
+        self.setCentralWidget(voxels)
+        self.show()
 
 class MainWindow(QMainWindow):
     def __init__(self):
