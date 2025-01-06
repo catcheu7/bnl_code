@@ -43,7 +43,6 @@ class GDS():
                         plt.fill(*cor.exterior.xy,color = colors[count])
                         break
             count +=1
-            print(count)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             fig.savefig(layername,dpi = 100)
@@ -71,6 +70,7 @@ class GDS():
         matlist = ()
         for a in layers:
             matimg = imreader(a)/255
+            print(matlist.shape)
             matlist += (matimg,)
         return matlist
     
