@@ -70,7 +70,7 @@ class GDS():
         matlist = ()
         for a in layers:
             matimg = imreader(a)/255
-            print(matlist.shape)
+            print(matimg.shape)
             matlist += (matimg,)
         return matlist
     
