@@ -72,7 +72,7 @@ class GDS():
         for a in layers:
             matimg = imreader(a)/255
             boolmat = (matimg[:,:,1] != 1).astype(int)
-            matlist += (boolmat,)
+            matlist += (boolmat[:,:,0],)
         return matlist
     
     """ def loadsample(layers):
