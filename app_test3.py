@@ -179,7 +179,7 @@ class MainWindow(QMainWindow):
         
         if sample != None:
             win = graphsample()
-            win.exec()
+            win.show()
 
 app = QApplication(sys.argv)
 
