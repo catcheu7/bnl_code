@@ -117,7 +117,7 @@ class graphsample(FigureCanvasQTAgg):
 class graphwin(QWidget):
     def __init__(self):
         super().__init__()
-        canvas = graphsample()
+        canvas = graphsample(self)
         self.setCentralWidget(canvas)
         self.setWindowTitle('Graph')
         graph = MainWindow.button_clicked()
