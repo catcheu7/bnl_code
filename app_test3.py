@@ -80,7 +80,7 @@ class GDS():
         matlist = ()
         for a in layers:
             #matimg = imreader(a)/255
-            boolmat = (matimg[:,:,1] != 1).astype(int)
+            boolmat = (a[:,:,:,1] != 1).astype(int)
             matlist += (boolmat,)
         return matlist
     
