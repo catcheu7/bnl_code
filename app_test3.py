@@ -33,6 +33,7 @@ class GDS():
         matlist = []
         for a,coords in polys.items():
             plt.clf()
+            fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
                 m = Polygon(b)
