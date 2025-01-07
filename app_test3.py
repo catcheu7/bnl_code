@@ -123,10 +123,11 @@ class graphsample(FigureCanvasQTAgg):
         super().__init__(ax)
         
 class graphwin(QWidget):
-    def __init__(self):
-        sample = MainWindow.button_clicked(self.getValues())
+    def __init__(self,sample):
+        sample = MainWindow.button_clicked(self.GetValues())
         super().__init__()
         canvas = graphsample()
+        sample = self.sample
         self.setWindowTitle('Graph Sample')
         canvas.ax1.voxels(sample)
         self.show()
