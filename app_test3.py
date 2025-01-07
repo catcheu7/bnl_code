@@ -125,8 +125,7 @@ class graphsample(FigureCanvasQTAgg):
 class graphwin(QWidget):
     def __init__(self):
         super().__init__()
-        canvas = graphsample(self)
-        self.setCentralWidget(canvas)
+        canvas = graphsample()
         self.setWindowTitle('Graph')
         canvas.ax1.voxels(sample)
         self.show()
@@ -188,11 +187,11 @@ class MainWindow(QMainWindow):
             figcustom = GDS.graphingbound(diff1,bound1)
             layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
             matlist = GDS.loadlayers(matcol)
-            sample = GDS.loadsample(matcol)
-            if sample != None:
-                win = graphsample()
+            self.sample = GDS.loadsample(matcol)
+            if self.sample != None:
+                win = graphwin()
                 win.show()
-            return sample
+            return self.sample
         
         
 
