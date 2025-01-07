@@ -181,15 +181,15 @@ class MainWindow(QMainWindow):
         bound1 = [(xstart,ystart),(xend,yend)]
         diff1 = [(xend - xstart),(yend - ystart)]
         boolcheck = GDS.checkbounds(self,xstart,xend,ystart,yend,bound1,diff1)
-        sample = None
+        self.sample = None
         if boolcheck == False:
             print('Error')
         else:
             figcustom = GDS.graphingbound(diff1,bound1)
             layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
             matlist = GDS.loadlayers(matcol)
-            self.sample = GDS.loadsample(matcol)
-            if sample.all() != None:
+            sample = GDS.loadsample(matcol)
+            if sample != None:
                 win = graphsample()
                 win.show()
             return sample
