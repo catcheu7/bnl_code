@@ -124,7 +124,7 @@ class graphsample(FigureCanvasQTAgg):
         
 class graphwin(QWidget):
     def __init__(self):
-        sample = MainWindow(self.samplereturn())
+        sample = MainWindow(self.samplereturn(self))
         super().__init__()
         canvas = graphsample()
         sample = self.sample
@@ -133,8 +133,7 @@ class graphwin(QWidget):
         self.show()
 
 class MainWindow(QMainWindow):
-    def __init__(self,sample):
-        self.sample = sample
+    def __init__(self):
         super().__init__()
 
         self.setWindowTitle("GDS Voxels v.0.01")
