@@ -49,7 +49,7 @@ class GDS():
             count +=1
             col = fig.canvas.tostring_argb()
             cols,rows = fig.canvas.get_width_height()
-            mat = np.frombuffer(col,dtype = np.uint8).reshape(rows,cols,3)
+            mat = np.frombuffer(col,dtype = np.uint8).reshape(rows,cols,4)
             matlist.append(mat[:,:,0])
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
@@ -189,8 +189,8 @@ class MainWindow(QMainWindow):
         else:
             figcustom = GDS.graphingbound(diff1,bound1)
             layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
-            matlist = GDS.loadlayers(matcol)
-            sample = GDS.loadsample(matlist)
+            #matlist = GDS.loadlayers(matcol)
+            sample = GDS.loadsample(matcol)
             if sample.all() != None:
                 win = graphsample()
                 win.show()
