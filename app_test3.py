@@ -124,7 +124,7 @@ class graphsample(FigureCanvasQTAgg):
         
 class graphwin(QWidget):
     def __init__(self):
-        sample = MainWindow(self.samplereturn(self))
+        sample = MainWindow(self.samplereturn())
         super().__init__()
         canvas = graphsample()
         sample = self.sample
