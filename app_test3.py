@@ -27,7 +27,7 @@ class GDS():
         plt.ylim(0,diff[1])
         return fig
 
-    def layered(bound,fig,polys):
+    def layered(bound,bound1,fig,polys):
         count = 0
         filenames = []
         for a,coords in polys.items():
@@ -37,12 +37,12 @@ class GDS():
                 m = Polygon(b)
                 t = np.array(m.exterior.xy)
                 for i in np.arange(0,t.shape[1]):
-                    if bound[0][0] < t[0][i] < bound[1][0] and bound[0][1] < t[1][i] < bound[1][1]:
+                    if bound1[0][0] < t[0][i] < bound1[1][0] and bound1[0][1] < t[1][i] < bound1[1][1]:
                         adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
-                        scaled = adjust//np.array([[0.5,0.5]]).transpose()
+                        scaled = adjust//np.array([[1,1]]).transpose()
                         cor = Polygon(list(zip(scaled[0],scaled[1])))
                         print(cor)
-                        plt.fill(*cor.exterior.xy,color = colors[count])
+                        plt.fill(*cor.exterior.xy)#color = colors[count])
                         break
             count +=1
             layername = 'layer' + str(count) + '.png'
