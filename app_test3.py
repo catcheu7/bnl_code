@@ -112,19 +112,17 @@ class graphsample(FigureCanvasQTAgg):
     def __init__(self):
         
         ax = plt.figure()
+        self.ax1 = ax.add_subplot(projection = '3d')
         super().__init__(ax)
         
 class graphwin(QWidget):
     def __init__(self):
         super().__init__()
         canvas = graphsample(self)
-        ax1 = canvas.add_subplot(projection = '3d')
         self.setCentralWidget(canvas)
         self.setWindowTitle('Graph')
         graph = MainWindow.button_clicked()
-        voxels = GDS.graph(graph)
-        canvas.ax1.plot(voxels)
-        canvas.draw()
+        canvas.ax1.voxels(graph)
         self.show()
 
 class MainWindow(QMainWindow):
