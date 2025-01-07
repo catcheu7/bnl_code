@@ -31,6 +31,7 @@ class GDS():
         count = 0
         filenames = []
         for a,coords in polys.items():
+            plt.clf()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
                 m = Polygon(b)
@@ -43,7 +44,6 @@ class GDS():
                         print(cor)
                         plt.fill(*cor.exterior.xy,color = colors[count])
                         break
-            plt.clf()
             count +=1
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
