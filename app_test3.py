@@ -180,7 +180,7 @@ class MainWindow(QMainWindow):
             print('Error')
         else:
             figcustom = GDS.graphingbound(diff1,bound1)
-            layers = GDS.layered(bound1,figcustom,polys)
+            layers = GDS.layered(bound,bound1,figcustom,polys)
             matlist = GDS.loadlayers(layers)
             sample = GDS.loadsample(matlist)
             if sample.all() != None:
