@@ -123,8 +123,8 @@ class graphsample(FigureCanvasQTAgg):
         super().__init__(ax)
         
 class graphwin(QWidget):
-    def __init__(self):
-        sample = MainWindow(self.samplereturn())
+    def __init__(self,sample):
+        self.sample = sample
         super().__init__()
         canvas = graphsample()
         sample = self.sample
