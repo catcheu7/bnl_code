@@ -48,6 +48,7 @@ class GDS():
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             fig.savefig(layername,dpi = 100)
+            plt.show()
         return filenames
 
     def checkbounds(self,x1,x2,y1,y2,bound,diff):
