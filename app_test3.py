@@ -104,7 +104,6 @@ class GDS():
         return sample
     
     def graph(sample):
-        ax = plt.figure().add_subplot()
         ax.voxels(sample)
         return ax
     
@@ -129,8 +128,7 @@ class graphwin(QWidget):
         canvas = graphsample(self)
         self.setCentralWidget(canvas)
         self.setWindowTitle('Graph')
-        graph = MainWindow.button_clicked()
-        canvas.ax1.voxels(graph)
+        canvas.ax1.voxels(sample)
         self.show()
 
 class MainWindow(QMainWindow):
@@ -190,7 +188,7 @@ class MainWindow(QMainWindow):
             figcustom = GDS.graphingbound(diff1,bound1)
             layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
             matlist = GDS.loadlayers(matcol)
-            sample = GDS.loadsample(matcol)
+            self.sample = GDS.loadsample(matcol)
             if sample.all() != None:
                 win = graphsample()
                 win.show()
