@@ -30,6 +30,7 @@ class GDS():
     def layered(bound,bound1,fig,polys):
         count = 0
         filenames = []
+        matlist = []
         for a,coords in polys.items():
             plt.clf()
             colors = ['black','red','blue','magenta','green','orange']
@@ -48,12 +49,13 @@ class GDS():
             col = fig.canvas.tostring_rgb()
             cols,rows = fig.canvas.get_width_height()
             mat = np.frombuffer(col,dtype = np.uint8).reshape(rows,cols,3)
+            matlist.append(mat[:,:,:,0])
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             fig.savefig(layername,dpi = 100)
 
             plt.show()
-        return filenames
+        return filenames, matlist
 
     def checkbounds(self,x1,x2,y1,y2,bound,diff):
         if x1 < bound[0][0] or x1 > bound[1][0]:
@@ -185,8 +187,8 @@ class MainWindow(QMainWindow):
             print('Error')
         else:
             figcustom = GDS.graphingbound(diff1,bound1)
-            layers = GDS.layered(bound,bound1,figcustom,polys)
-            matlist = GDS.loadlayers(layers)
+            layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
+            matlist = GDS.loadlayers(matcol)
             sample = GDS.loadsample(matlist)
             if sample.all() != None:
                 win = graphsample()
