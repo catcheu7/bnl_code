@@ -132,6 +132,9 @@ class graphwin(QWidget):
         canvas.ax1.voxels(sample)
         self.show()
 
+    def samplereturn(self):
+        return self.sample
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -195,8 +198,7 @@ class MainWindow(QMainWindow):
                 win.show()
             return self.sample
         
-    def samplereturn(self):
-        return self.sample
+    
         
         
 
