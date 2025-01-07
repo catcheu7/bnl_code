@@ -126,7 +126,7 @@ class graphwin(QWidget):
     def __init__(self):
         super().__init__()
         canvas = graphsample()
-        sample = MainWindow.button_clicked()
+        sample = MainWindow.button_clicked(self)
         self.setWindowTitle('Graph Sample')
         canvas.ax1.voxels(sample)
         self.show()
@@ -168,7 +168,7 @@ class MainWindow(QMainWindow):
         wid.setLayout(self.layoutin)
         self.setCentralWidget(wid)
 
-    def button_clicked(self,s):
+    def button_clicked(self):
         print("clicked")
         lwin,setter = QFileDialog.getOpenFileName(self,'GDS Loader',filter = 'GDS (*.gds)')
         bound,diff,polys = GDS.loadgds(lwin)
