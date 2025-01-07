@@ -79,7 +79,7 @@ class GDS():
     def loadlayers(layers):
         matlist = ()
         for a in layers:
-            matimg = imreader(a)/255
+            #matimg = imreader(a)/255
             boolmat = (matimg[:,:,1] != 1).astype(int)
             matlist += (boolmat,)
         return matlist
@@ -189,7 +189,7 @@ class MainWindow(QMainWindow):
         else:
             figcustom = GDS.graphingbound(diff1,bound1)
             layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
-            #matlist = GDS.loadlayers(matcol)
+            matlist = GDS.loadlayers(matcol)
             sample = GDS.loadsample(matcol)
             if sample.all() != None:
                 win = graphsample()
