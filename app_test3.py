@@ -147,6 +147,7 @@ class MainWindow(QMainWindow):
         gdsbutton = QPushButton("Load Design")
         gdsbutton.clicked.connect(self.button_clicked)
         #self.setCentralWidget(gdsbutton)
+        self.fname = QLineEdit()
 
         self.bound_x1 = QLineEdit()
         x1 = QLabel('X: Starting')
@@ -179,6 +180,9 @@ class MainWindow(QMainWindow):
     def button_clicked(self):
         print("clicked")
         lwin,setter = QFileDialog.getOpenFileName(self,'GDS Loader',filter = 'GDS (*.gds)')
+        self.fname.setText(lwin)
+
+    def graphset(self,lwin):
         bound,diff,polys = GDS.loadgds(lwin)
         xstart = float(self.bound_x1.text())
         xend = float(self.bound_x2.text())
