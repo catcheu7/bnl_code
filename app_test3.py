@@ -140,6 +140,7 @@ class graphwin(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        graphwindow = graphwin()
 
         self.setWindowTitle("GDS Voxels v.0.01")
         wid = QWidget()
