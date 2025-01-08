@@ -171,9 +171,7 @@ class MainWindow(QMainWindow):
         wid.setLayout(self.layoutin)
         self.setCentralWidget(wid)
 
-        if self.sample.all() != None:
-                win = graphwin(self.samplereturn())
-                win.show()
+        
 
     def button_clicked(self):
         print("clicked")
@@ -196,6 +194,9 @@ class MainWindow(QMainWindow):
             layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
             matlist = GDS.loadlayers(matcol)
             self.sample = GDS.loadsample(matcol)
+            if self.sample.all() != None:
+                win = graphwin(self.samplereturn())
+                win.show()
             
         
     def samplereturn(self):
