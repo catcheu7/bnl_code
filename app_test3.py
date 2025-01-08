@@ -138,8 +138,8 @@ class graphwin(QWidget):
     
 
 class MainWindow(QMainWindow):
-    def __init__(self,*args,*kwargs):
-        super().__init__(*args,*kwargs)
+    def __init__(self,*args,**kwargs):
+        super().__init__(*args,**kwargs)
 
         self.setWindowTitle("GDS Voxels v.0.01")
         wid = QWidget()
