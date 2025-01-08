@@ -148,6 +148,7 @@ class MainWindow(QMainWindow):
         gdsbutton.clicked.connect(self.button_clicked)
         #self.setCentralWidget(gdsbutton)
         self.fname = QLineEdit()
+        self.fname.setText('None')
 
         self.bound_x1 = QLineEdit()
         x1 = QLabel('X: Starting')
@@ -183,27 +184,28 @@ class MainWindow(QMainWindow):
         self.fname.setText(lwin)
 
     def graphset(self,lwin):
-        bound,diff,polys = GDS.loadgds(lwin)
-        xstart = float(self.bound_x1.text())
-        xend = float(self.bound_x2.text())
-        ystart = float(self.bound_y1.text())
-        yend = float(self.bound_y2.text())
-        self.errormes = QLabel()
-        self.layoutin.addRow(self.errormes)
-        bound1 = [(xstart,ystart),(xend,yend)]
-        diff1 = [(xend - xstart),(yend - ystart)]
-        boolcheck = GDS.checkbounds(self,xstart,xend,ystart,yend,bound1,diff1)
-        self.sample = None
-        if boolcheck == False:
-            print('Error')
-        else:
-            figcustom = GDS.graphingbound(diff1,bound1)
-            layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
-            matlist = GDS.loadlayers(matcol)
-            self.sample = GDS.loadsample(matcol)
-            if self.sample.all() != None:
-                win = graphwin(self.samplereturn())
-                win.show()
+        if lwin != 'None':
+            bound,diff,polys = GDS.loadgds(lwin)
+            xstart = float(self.bound_x1.text())
+            xend = float(self.bound_x2.text())
+            ystart = float(self.bound_y1.text())
+            yend = float(self.bound_y2.text())
+            self.errormes = QLabel()
+            self.layoutin.addRow(self.errormes)
+            bound1 = [(xstart,ystart),(xend,yend)]
+            diff1 = [(xend - xstart),(yend - ystart)]
+            boolcheck = GDS.checkbounds(self,xstart,xend,ystart,yend,bound1,diff1)
+            self.sample = None
+            if boolcheck == False:
+                print('Error')
+            else:
+                figcustom = GDS.graphingbound(diff1,bound1)
+                layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
+                matlist = GDS.loadlayers(matcol)
+                self.sample = GDS.loadsample(matcol)
+                if self.sample.all() != None:
+                    win = graphwin(self.samplereturn())
+                    win.show()
             
         
     def samplereturn(self):
