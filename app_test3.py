@@ -169,7 +169,7 @@ class MainWindow(QMainWindow):
         self.confirm = QPushButton()
         self.confirm.clicked.connect(MainWindow.graphset(self, self.fname.text()))
 
-        inwidget = [gdsbutton,x1,self.bound_x1,x2,self.bound_x2,y1,self.bound_y1,y2,self.bound_y2]
+        inwidget = [gdsbutton,self.fname,x1,self.bound_x1,x2,self.bound_x2,y1,self.bound_y1,y2,self.bound_y2,self.confirm]
 
         self.layoutin = QFormLayout()
 
