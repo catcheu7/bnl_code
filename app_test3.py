@@ -166,7 +166,7 @@ class MainWindow(QMainWindow):
         y2 = QLabel('Y: Ending')
         self.bound_y2.setValidator(QDoubleValidator())
 
-        self.confirm = QPushButton()
+        self.confirm = QPushButton('Confirm')
         self.confirm.clicked.connect(self.graphset)
 
         inwidget = [gdsbutton,self.fname,x1,self.bound_x1,x2,self.bound_x2,y1,self.bound_y1,y2,self.bound_y2,self.confirm]
