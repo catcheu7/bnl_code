@@ -187,6 +187,7 @@ class MainWindow(QMainWindow):
         self.fname.setText(lwin)
 
     def graphset(self,lwin):
+        print(lwin)
         if lwin != 'None':
             bound,diff,polys = GDS.loadgds(lwin)
             xstart = float(self.bound_x1.text())
