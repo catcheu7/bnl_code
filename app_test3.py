@@ -167,7 +167,7 @@ class MainWindow(QMainWindow):
         self.bound_y2.setValidator(QDoubleValidator())
 
         self.confirm = QPushButton()
-        self.confirm.clicked.connect(self.graphset(self, self.fname.text()))
+        self.confirm.clicked.connect(self.graphset(self.fname.text()))
 
         inwidget = [gdsbutton,self.fname,x1,self.bound_x1,x2,self.bound_x2,y1,self.bound_y1,y2,self.bound_y2,self.confirm]
 
@@ -187,7 +187,6 @@ class MainWindow(QMainWindow):
         self.fname.setText(lwin)
 
     def graphset(self,lwin):
-        print(lwin)
         if lwin != 'None':
             bound,diff,polys = GDS.loadgds(lwin)
             xstart = float(self.bound_x1.text())
