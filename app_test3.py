@@ -56,7 +56,8 @@ class GDS():
             print(col)
             dim = fig.canvas.get_width_height()[::-1]
             mat = np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
-            matlist.append(col)#[:,:,0])
+            matlist.append(mat)#[:,:,0])
+            print(mat.shape)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             fig.savefig(layername,dpi = 100)
