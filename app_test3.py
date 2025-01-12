@@ -54,7 +54,7 @@ class GDS():
             col = fig.canvas.buffer_argb()
             mat = np.asarray(col)
             print(col)
-            cols,rows = fig.canvas.get_width_height()
+            cols,rows = fig.canvas.get_width_height()[::-1]
             mat = np.frombuffer(col,dtype = np.uint8).reshape(rows,cols,4)
             matlist.append(col)#[:,:,0])
             layername = 'layer' + str(count) + '.png'
