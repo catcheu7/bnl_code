@@ -224,7 +224,7 @@ app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
 
-app.exec()
+app.exec_()
 
 #Created: December 16, 2024 - new version
 #Use for tutorial only
