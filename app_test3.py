@@ -3,6 +3,7 @@ import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')
+plt.switch_backend('agg')
 from PIL import Image
 from shapely import Polygon
 #import ipython
