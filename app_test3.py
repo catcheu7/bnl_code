@@ -51,7 +51,7 @@ class GDS():
                         plt.fill(*cor.exterior.xy)#color = colors[count])
                         break
             count +=1
-            col = fig.canvas.buffer_argb()
+            col = fig.canvas.buffer_rgba()
             mat = np.asarray(col)
             print(col)
             dim = fig.canvas.get_width_height()[::-1]
@@ -86,7 +86,7 @@ class GDS():
         matlist = ()
         for a in layers:
             #matimg = imreader(a)/255
-            boolmat = (a[:,1] != 1).astype(int)
+            boolmat = (a[:,:,0] != 1).astype(int)
             matlist += (boolmat,)
         return matlist
     
