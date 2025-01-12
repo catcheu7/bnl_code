@@ -50,11 +50,12 @@ class GDS():
                         plt.fill(*cor.exterior.xy)#color = colors[count])
                         break
             count +=1
-            col = np.array(fig.canvas.renderer.buffer_argb())
+            col = fig.canvas.buffer_argb()
+            mat = np.asarray(col)
             print(col)
             #cols,rows = fig.canvas.get_width_height()
             #mat = np.frombuffer(col,dtype = np.uint8).reshape(rows,cols,4)
-            matlist.append(col[:,:,0])
+            matlist.append(col)#[:,:,0])
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             fig.savefig(layername,dpi = 100)
