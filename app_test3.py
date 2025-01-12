@@ -128,10 +128,10 @@ class graphwin(QWidget):
         super().__init__()
         layform = QFormLayout(self)
         self.sample = sample
-        canvas = graphsample()
+        self.canvas = graphsample()
         sample = self.sample
         self.setWindowTitle('Graph Sample')
-        canvas.ax1.voxels(sample)
+        self.canvas.ax1.voxels(sample)
         layform.addWidget(canvas)
         self.setLayout(layform)
 
@@ -208,8 +208,8 @@ class MainWindow(QMainWindow):
                 matlist = GDS.loadlayers(matcol)
                 self.sample = GDS.loadsample(matcol)
                 if self.sample.all() != None:
-                    win = graphwin(self.samplereturn())
-                    win.show()
+                    self.win = graphwin(self.samplereturn())
+                    self.win.show()
             
         
     def samplereturn(self):
