@@ -213,7 +213,7 @@ class MainWindow(QMainWindow):
                 figcustom = GDS.graphingbound(diff1,bound1)
                 layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
                 matlist = GDS.loadlayers(matcol)
-                self.sample = GDS.loadsample(matcol)
+                self.sample = GDS.loadsample(matlist)
                 if self.sample.all() != None:
                     self.win = graphwin(self.samplereturn())
                     self.win.show()
