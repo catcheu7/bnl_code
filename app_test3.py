@@ -151,6 +151,8 @@ class MainWindow(QMainWindow):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
 
+        self.threads = multi.Pool(processes=3)
+
         self.setWindowTitle("GDS Voxels v.0.01")
         wid = QWidget()
 
