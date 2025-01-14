@@ -2,7 +2,7 @@ import sys
 import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.use('Agg')
+matplotlib.use('agg')
 plt.switch_backend('agg')
 from PIL import Image
 from shapely import Polygon
