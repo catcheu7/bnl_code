@@ -12,6 +12,7 @@ from PySide6.QtGui import QDoubleValidator
 from imageio import imread as imreader
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 import threading
+import multiprocessing as multi
 #import /simu/simu_011325_v3.py as simu
 
 class GDS():
