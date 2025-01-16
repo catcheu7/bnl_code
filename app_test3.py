@@ -142,7 +142,7 @@ class graphwin(QWidget):
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
         self.setWindowTitle('Graph Sample')
-        self.canvas.ax1.scatter(a,b,c)
+        plt.scatter(a,b,c)
         layform.addWidget(self.canvas)
         self.setLayout(layform)
 
