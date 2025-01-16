@@ -138,11 +138,11 @@ class graphwin(QWidget):
         
         super().__init__()
         layform = QFormLayout(self)
-        self.sample = sample
+        self.sample = 1-sample
         self.canvas = graphsample()
         sample = self.sample
         self.setWindowTitle('Graph Sample')
-        self.canvas.ax1.voxels(sample)
+        self.canvas.ax1.voxels(self.sample)
         layform.addWidget(self.canvas)
         self.setLayout(layform)
 
