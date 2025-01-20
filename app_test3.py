@@ -14,6 +14,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 import threading
 import multiprocessing as multi
 from mpl_toolkits.mplot3d import Axes3D
+import pyqtgraph
 #import /simu/simu_011325_v3.py as simu
 
 class GDS():
