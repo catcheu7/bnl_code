@@ -15,6 +15,8 @@ import threading
 import multiprocessing as multi
 from mpl_toolkits.mplot3d import Axes3D
 import pyqtgraph
+import pyqtgraph.opengl as gl
+from pyqtgraph import functions as funcs
 #import /simu/simu_011325_v3.py as simu
 
 class GDS():
