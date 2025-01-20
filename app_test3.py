@@ -148,6 +148,7 @@ class graphwin(QWidget):
         colmat[:,:,:,0] = 0
         colmat[:,:,:,1] = 0
         colmat[:,:,:,2] = 255*self.sample/np.max(self.sample)
+        colmat[:,:,:,3] = 50
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
         xdim = np.arange(0,x)
