@@ -142,6 +142,7 @@ class graphwin(QWidget):
         
         super().__init__()
         layform = QFormLayout(self)
+        widgraph = pyqtgraph.PlotWidget()
         self.sample = 1-sample
         x,y,z = self.sample.shape
         colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
@@ -150,12 +151,12 @@ class graphwin(QWidget):
         colmat[:,:,:,2] = 255*self.sample/np.max(self.sample)
         colmat[:,:,:,3] = 50
         self.canvas = graphsample()
-        a,b,c = np.nonzero(sample)
+        #a,b,c = np.nonzero(sample)
         xdim = np.arange(0,x)
         ydim = np.arange(0,y)
         zdim = np.arange(0,z)
         self.setWindowTitle('Graph Sample')
-        plt.scatter(a,b,c,edgecolors='k')
+        #plt.scatter(a,b,c,edgecolors='k')
         layform.addWidget(self.canvas)
         self.setLayout(layform)
 
