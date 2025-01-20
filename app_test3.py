@@ -147,6 +147,9 @@ class graphwin(QWidget):
         colmat = [[0,0,40] if a == 1 for a in self.sample]
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
+        xdim = np.arange(0,x)
+        ydim = np.arange(0,y)
+        zdim = np.arange(0,z)
         self.setWindowTitle('Graph Sample')
         plt.scatter(a,b,c,edgecolors='k')
         layform.addWidget(self.canvas)
