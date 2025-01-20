@@ -144,6 +144,7 @@ class graphwin(QWidget):
         layform = QFormLayout(self)
         self.sample = 1-sample
         x,y,z = self.sample.shape
+        colmat = [[0,0,40] if a == 1 for a in self.sample]
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
         self.setWindowTitle('Graph Sample')
