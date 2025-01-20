@@ -139,6 +139,7 @@ class graphwin(QWidget):
         super().__init__()
         layform = QFormLayout(self)
         self.sample = 1-sample
+        x,y,z = self.sample.shape
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
         self.setWindowTitle('Graph Sample')
