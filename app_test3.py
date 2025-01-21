@@ -145,7 +145,7 @@ class graphwin(QWidget):
         layform = QFormLayout(self)
         widgraph = pyqtgraph.PlotWidget()
         widpyqt = gl.GLViewWidget()
-        widgraph.show()
+        widpyqt.show()
         self.sample = 1-sample
         x,y,z = self.sample.shape
         colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
