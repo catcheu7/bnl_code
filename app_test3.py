@@ -151,7 +151,7 @@ class graphwin(QWidget):
         colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
         colmat[:,:,:,0] = 0
         colmat[:,:,:,1] = 0
-        colmat[:,:,:,2] = 255*self.sample/np.max(self.sample)
+        colmat[:,:,:,2] = 255*self.sample/1
         colmat[:,:,:,3] = 50
         widgl = gl.GLVolumeItem(colmat)
         widpyqt.addItem(widgl)
