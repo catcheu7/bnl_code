@@ -4,7 +4,7 @@ import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('agg')
-plt.switch_backend('QT5Agg')
+plt.switch_backend('Agg')
 from PIL import Image
 from shapely import Polygon
 #import ipython
