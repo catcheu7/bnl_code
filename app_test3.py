@@ -157,6 +157,7 @@ class graphwin(QWidget):
         colmat[:,:,:,3] = 50
         widgl = gl.GLVolumeItem(colmat)
         widpyqt.addItem(widgl)
+        viscan = scene.canvas.SceneCanvas('Voxel')
         #self.canvas = graphsample()
         #a,b,c = np.nonzero(sample)
         xdim = np.arange(0,x)
