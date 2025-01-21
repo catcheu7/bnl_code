@@ -162,7 +162,7 @@ class graphwin(QWidget):
         zdim = np.arange(0,z)
         self.setWindowTitle('Graph Sample')
         #plt.scatter(a,b,c,edgecolors='k')
-        #layform.addWidget(self.canvas)
+        layform.addWidget(widpyqt)
         self.setLayout(layform)
 
     
