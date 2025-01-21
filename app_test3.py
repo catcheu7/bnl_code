@@ -158,6 +158,8 @@ class graphwin(QWidget):
         widgl = gl.GLVolumeItem(colmat)
         widpyqt.addItem(widgl)
         viscan = scene.canvas.SceneCanvas('Voxel')
+        gridview = viscan.central_widget.add_grid()
+        viewer = gridview.add_view()
         #self.canvas = graphsample()
         #a,b,c = np.nonzero(sample)
         xdim = np.arange(0,x)
