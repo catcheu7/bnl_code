@@ -166,7 +166,7 @@ class graphwin(QWidget):
         vol = scene.visuals.Volume(self.sample)
         self.setWindowTitle('Graph Sample')
         #plt.scatter(a,b,c,edgecolors='k')
-        layform.addWidget(viscan.native)
+        layform.addWidget(viscan.canvas.native)
         self.setLayout(layform)
 
     
