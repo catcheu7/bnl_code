@@ -165,7 +165,7 @@ class graphwin(QWidget):
         xdim = np.arange(0,x)
         ydim = np.arange(0,y)
         zdim = np.arange(0,z)
-        vol = scene.visuals.Volume(self.sample)
+        vol = scene.visuals.Volume(self.sample, parent = viewer)
         self.setWindowTitle('Graph Sample')
         #plt.scatter(a,b,c,edgecolors='k')
         layform.addWidget(viscan.native)
