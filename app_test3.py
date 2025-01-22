@@ -21,6 +21,7 @@ from pyqtgraph import functions as funcs
 from pyqtgraph.opengl import GLScatterPlotItem as glscatter
 import vispy
 from vispy import scene, io, app
+app.use_app('PySide6')
 #import /simu/simu_011325_v3.py as simu
 
 class GDS():
