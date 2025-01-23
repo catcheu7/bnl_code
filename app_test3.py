@@ -174,7 +174,7 @@ class graphwin(QWidget):
         #vol = scene.Volume(self.sample, parent = viewer.scene)
         vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
         vol2 = mrpy.simpleVolumeToDenseGrid(vol)
-        iso = mrpy.gridToMesh(vol2, isovalue = 1)
+        iso = mrpy.gridToMesh(vol2)
         mesh = Poly3DCollection(iso)
         self.canvas.add_collection3d(mesh)
         self.setWindowTitle('Graph Sample')
