@@ -161,24 +161,24 @@ class graphwin(QWidget):
         colmat[:,:,:,2] = 255*self.sample/1
         colmat[:,:,:,3] = 50
         #vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
-        widgl = gl.GLVolumeItem(colmat)
+        """ widgl = gl.GLVolumeItem(colmat)
         widpyqt.addItem(widgl)
         viscan = scene.canvas.SceneCanvas('Voxel')
         gridview = viscan.central_widget.add_grid()
-        viewer = gridview.add_view()
+        viewer = gridview.add_view() """
         self.canvas = graphsample()
-        #a,b,c = np.nonzero(sample)
+        a,b,c = np.nonzero(sample)
         xdim = np.arange(0,x)
         ydim = np.arange(0,y)
         zdim = np.arange(0,z)
         #vol = scene.Volume(self.sample, parent = viewer.scene)
-        vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
+        """ vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
         vol2 = mrpy.simpleVolumeToDenseGrid(vol)
         iso = mrpy.gridToMesh(vol2)
         mesh = Poly3DCollection(iso)
-        self.canvas.add_collection3d(mesh)
+        self.canvas.add_collection3d(mesh) """
         self.setWindowTitle('Graph Sample')
-        #plt.scatter(a,b,c,edgecolors='k')
+        plt.scatter(a,b,c,edgecolors='k')
         layform.addWidget(viscan.native)
         self.setLayout(layform)
 
