@@ -153,7 +153,7 @@ class graphwin(QWidget):
         widgraph = pyqtgraph.PlotWidget()
         widpyqt = gl.GLViewWidget()
         widpyqt.show()
-        self.sample = (1-sample).dtype(float32)
+        self.sample = (1-sample).dtype(np.float32)
         x,y,z = self.sample.shape
         colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
         colmat[:,:,:,0] = 0
