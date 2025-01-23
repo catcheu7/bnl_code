@@ -24,6 +24,8 @@ app.use_app('PySide6')
 import scipy
 import skimage
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+import meshlib
+from meshlib import mrmeshnumpy as mrnumpy, mrmeshpy as mrpy
 #import /simu/simu_011325_v3.py as simu
 
 class GDS():
