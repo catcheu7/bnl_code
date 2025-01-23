@@ -169,7 +169,7 @@ class graphwin(QWidget):
         xdim = np.arange(0,x)
         ydim = np.arange(0,y)
         zdim = np.arange(0,z)
-        vol = scene.Volume(self.sample, parent = viewer.scene)
+        #vol = scene.Volume(self.sample, parent = viewer.scene)
         mesh = Poly3DCollection(vert[face])
         self.canvas.add_collection3d(mesh)
         self.setWindowTitle('Graph Sample')
