@@ -153,14 +153,14 @@ class graphwin(QWidget):
         widgraph = pyqtgraph.PlotWidget()
         widpyqt = gl.GLViewWidget()
         widpyqt.show()
-        self.sample = 1-sample
+        self.sample = (1-sample).dtype(float32)
         x,y,z = self.sample.shape
         colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
         colmat[:,:,:,0] = 0
         colmat[:,:,:,1] = 0
         colmat[:,:,:,2] = 255*self.sample/1
         colmat[:,:,:,3] = 50
-        vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
+        #vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
         widgl = gl.GLVolumeItem(colmat)
         widpyqt.addItem(widgl)
         viscan = scene.canvas.SceneCanvas('Voxel')
@@ -174,8 +174,8 @@ class graphwin(QWidget):
         #vol = scene.Volume(self.sample, parent = viewer.scene)
         vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
         vol2 = mrpy.simpleVolumeToDenseGrid(vol)
-        iso = mrpy.gridToMesh(vol2)
-        mesh = Poly3DCollection(vert[face])
+        iso = mrpy.gridToMesh(vol2, isovalue = 1)
+        mesh = Poly3DCollection(iso)
         self.canvas.add_collection3d(mesh)
         self.setWindowTitle('Graph Sample')
         #plt.scatter(a,b,c,edgecolors='k')
