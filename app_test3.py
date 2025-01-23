@@ -23,6 +23,7 @@ from vispy import scene, io, app
 app.use_app('PySide6')
 import scipy
 import skimage
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 #import /simu/simu_011325_v3.py as simu
 
 class GDS():
