@@ -157,6 +157,7 @@ class graphwin(QWidget):
         colmat[:,:,:,1] = 0
         colmat[:,:,:,2] = 255*self.sample/1
         colmat[:,:,:,3] = 50
+        vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
         widgl = gl.GLVolumeItem(colmat)
         widpyqt.addItem(widgl)
         viscan = scene.canvas.SceneCanvas('Voxel')
