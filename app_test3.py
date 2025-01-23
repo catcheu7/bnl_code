@@ -178,7 +178,7 @@ class graphwin(QWidget):
         mesh = Poly3DCollection(iso)
         self.canvas.add_collection3d(mesh) """
         self.setWindowTitle('Graph Sample')
-        plt.scatter(a,b,c,edgecolors='k',s = 5)
+        plt.scatter(a,b,c,edgecolors='k',s = [3]*xdim)
         layform.addWidget(self.canvas)
         self.setLayout(layform)
 
