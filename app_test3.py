@@ -168,6 +168,7 @@ class graphwin(QWidget):
         viewer = gridview.add_view() """
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
+        randind = np.random.sample(np.arange(len(a)),int(len(a)/4))
         xdim = np.arange(0,x)
         ydim = np.arange(0,y)
         zdim = np.arange(0,z)
