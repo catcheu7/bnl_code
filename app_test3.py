@@ -1,5 +1,6 @@
 import sys
 import random
+import random
 import OpenGL
 import gdspy,numpy as np
 import matplotlib.pyplot as plt
