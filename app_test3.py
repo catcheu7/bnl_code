@@ -1,4 +1,5 @@
 import sys
+import random
 import OpenGL
 import gdspy,numpy as np
 import matplotlib.pyplot as plt
@@ -168,7 +169,7 @@ class graphwin(QWidget):
         viewer = gridview.add_view() """
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
-        randind = np.random.sample(range(len(a)),int(len(a)/4))
+        randind = random.sample(np.arange(len(a)),int(len(a)/4))
         anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
         xdim = np.arange(0,x)
         ydim = np.arange(0,y)
