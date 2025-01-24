@@ -170,11 +170,12 @@ class graphwin(QWidget):
         viewer = gridview.add_view() """
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
-        randind = random.sample(range(len(a)),int(len(a)/8))
+        randind = random.sample(range(len(a)),int(len(a)/100))
         anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
         xdim = np.arange(0,x)
         ydim = np.arange(0,y)
         zdim = np.arange(0,z)
+        print((anew))
         #vol = scene.Volume(self.sample, parent = viewer.scene)
         """ vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
         vol2 = mrpy.simpleVolumeToDenseGrid(vol)
