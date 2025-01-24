@@ -184,6 +184,7 @@ class graphwin(QWidget):
         self.canvas.add_collection3d(mesh) """
         self.setWindowTitle('Graph Sample')
         plt.scatter(anew,bnew,cnew,edgecolors='k')
+        self.canvas.view_init(elev = 90, azim = 0)
         layform.addWidget(self.canvas)
         self.setLayout(layform)
 
