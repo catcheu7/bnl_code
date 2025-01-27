@@ -24,6 +24,7 @@ from pyqtgraph.opengl import GLScatterPlotItem as glscatter
 from vispy import scene, io, app
 app.use_app('PySide6')
 import scipy
+from scipy.spatial import ConvexHull
 import skimage
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 import meshlib
