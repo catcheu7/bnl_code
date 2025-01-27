@@ -158,6 +158,7 @@ class graphwin(QWidget):
         widpyqt.show()
         self.sample = (1-sample).astype(np.float32)
         x,y,z = self.sample.shape
+        vertshull = ConvexHull(self.sample)
         colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
         colmat[:,:,:,0] = 0
         colmat[:,:,:,1] = 0
