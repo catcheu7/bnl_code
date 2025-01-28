@@ -133,7 +133,7 @@ class GDS():
             count += 1
         sample = np.concatenate(samplist,axis = 0)
         sampleout = np.concatenate(outline,axis = 0)
-        return sample,sampleout
+        return sample, sampleout
     
     def graph(sample):
         ax.voxels(sample)
@@ -274,14 +274,14 @@ class MainWindow(QMainWindow):
                 figcustom = GDS.graphingbound(diff1,bound1)
                 layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
                 matlist = GDS.loadlayers(matcol)
-                self.sample = GDS.loadsample(matlist)
+                self.sample, self.outline = GDS.loadsample(matlist)
                 if self.sample.all() != None:
                     self.win = graphwin(self.samplereturn())
                     self.win.show()
             
         
     def samplereturn(self):
-        return self.sample
+        return self.outline
         
     
         
