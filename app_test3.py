@@ -173,7 +173,7 @@ class graphwin(QWidget):
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
         ones = np.concatenate((a.T,b.T,c.T),axis = 0)
-        vertshull = ConvexHull(self.sample)
+        vertshull = ConvexHull(ones)
         randind = random.sample(range(len(a)),int(len(a)/1000))
         anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
         xdim = np.arange(0,x)
