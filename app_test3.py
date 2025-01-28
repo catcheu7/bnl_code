@@ -129,8 +129,8 @@ class GDS():
             sampout = np.broadcast_to(b,(5,b.shape[0],b.shape[1]))
             samplist += (samp,)
             outline += (sampout,)
-            plt.imshow(b)
             print(count)
+            plt.imshow(b)
             count += 1
         sample = np.concatenate(samplist,axis = 0)
         sampleout = np.concatenate(outline,axis = 0)
