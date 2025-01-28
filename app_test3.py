@@ -172,7 +172,7 @@ class graphwin(QWidget):
         viewer = gridview.add_view() """
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
-        ones = np.concatenate((a.T,b.T,c.T),axis = 0)
+        ones = np.asarray(list(zip(a,b,c)))
         vertshull = ConvexHull(np.asarray(list(zip(a,b,c))))
         randind = random.sample(range(len(a)),int(len(a)/1000))
         anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
