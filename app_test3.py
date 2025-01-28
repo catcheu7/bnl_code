@@ -158,7 +158,7 @@ class graphwin(QWidget):
         widpyqt.show()
         self.sample = (1-sample).astype(np.float32)
         x,y,z = self.sample.shape
-        vertshull = ConvexHull(self.sample)
+        
         colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
         colmat[:,:,:,0] = 0
         colmat[:,:,:,1] = 0
@@ -172,6 +172,8 @@ class graphwin(QWidget):
         viewer = gridview.add_view() """
         self.canvas = graphsample()
         a,b,c = np.nonzero(sample)
+        ones = np.concatenate((a,b,c),axis = 1)
+        vertshull = ConvexHull(self.sample)
         randind = random.sample(range(len(a)),int(len(a)/1000))
         anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
         xdim = np.arange(0,x)
