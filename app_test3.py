@@ -24,6 +24,7 @@ from pyqtgraph.opengl import GLScatterPlotItem as glscatter
 from vispy import scene, io, app
 app.use_app('PySide6')
 import scipy
+from scipy import ndimage
 from scipy.spatial import ConvexHull
 import skimage
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
@@ -122,7 +123,6 @@ class GDS():
         samplist = ()
         count = 0
         for b in layers:
-            b = scipy.ndimage.binary_fill_holes(b).astype(int)
             samp = np.broadcast_to(b,(5,b.shape[0],b.shape[1]))
             samplist += (samp,)
             print(count)
