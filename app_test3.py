@@ -122,6 +122,7 @@ class GDS():
         samplist = ()
         count = 0
         for b in layers:
+            b = scipy.ndimage.binary_fill_holes(b).astype(int)
             samp = np.broadcast_to(b,(5,b.shape[0],b.shape[1]))
             samplist += (samp,)
             print(count)
