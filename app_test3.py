@@ -68,7 +68,7 @@ class GDS():
                         scaled = adjust//np.array([[1,1]]).transpose()
                         cor = Polygon(list(zip(scaled[0],scaled[1])))
                         print(cor)
-                        plt.plot(*cor.exterior.xy)#color = colors[count])
+                        plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
                         break
             count +=1
             col = fig.canvas.buffer_rgba()
