@@ -5,6 +5,7 @@ import OpenGL
 import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
+from matplotlib.patches import Polygon
 matplotlib.use('agg')
 plt.switch_backend('Agg')
 from PIL import Image
@@ -57,6 +58,7 @@ class GDS():
         matlist = []
         for a,coords in polys.items():
             plt.clf()
+            ax = fig.add_subplot()
             fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
@@ -68,7 +70,8 @@ class GDS():
                         scaled = adjust//np.array([[1,1]]).transpose()
                         cor = Polygon(list(zip(scaled[0],scaled[1])))
                         print(cor)
-                        plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
+                        #plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
+                        ax.add_patch(cor)
                         break
             count +=1
             col = fig.canvas.buffer_rgba()
