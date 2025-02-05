@@ -180,7 +180,7 @@ class graphwin(QWidget):
         gridview = viscan.central_widget.add_grid()
         viewer = gridview.add_view() """
         self.canvas = graphsample()
-        a,b,c = np.nonzero(sample)
+        a,b,c = np.nonzero(self.sample)
         ones = np.asarray(list(zip(a,b,c)))
         
         vertshull = ConvexHull(np.asarray(list(zip(a,b,c))))
