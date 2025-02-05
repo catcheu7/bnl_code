@@ -199,7 +199,7 @@ class graphwin(QWidget):
         self.setWindowTitle('Graph Sample')
         """ for vert in vertshull.simplices:
          """    #self.canvas.ax1.plot3D(ones[vert,0],ones[vert,1],ones[vert,2])
-        self.canvas.ax1.plot(xs = anew,ys = bnew,zs = cnew)
+        self.canvas.ax1.plot(xs = anew,ys = bnew,zs = cnew,s = 2)
         #self.canvas.view_init(elev = 90, azim = 0)
         layform.addWidget(self.canvas)
         self.setLayout(layform)
