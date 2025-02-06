@@ -62,7 +62,7 @@ class GDS():
             fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
-                m = Polygon(b)
+                m = shapepoly(b)
                 t = np.array(m.exterior.xy)
                 for i in np.arange(0,t.shape[1]):
                     if bound1[0][0] < t[0][i] < bound1[1][0] and bound1[0][1] < t[1][i] < bound1[1][1]:
