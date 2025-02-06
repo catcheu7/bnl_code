@@ -162,9 +162,9 @@ class graphwin(QWidget):
         
         super().__init__()
         layform = QFormLayout(self)
-        widgraph = pyqtgraph.PlotWidget()
-        widpyqt = gl.GLViewWidget()
-        widpyqt.show()
+        #widgraph = pyqtgraph.PlotWidget()
+        #widpyqt = gl.GLViewWidget()
+        #widpyqt.show()
         self.sample = sample.astype(np.float32)
         x,y,z = self.sample.shape
         
@@ -181,7 +181,7 @@ class graphwin(QWidget):
         viewer = gridview.add_view() """
         self.canvas = graphsample()
         a,b,c = np.nonzero(self.sample)
-        ones = np.asarray(list(zip(a,b,c)))
+        #ones = np.asarray(list(zip(a,b,c)))
         
         #vertshull = ConvexHull(np.asarray(list(zip(a,b,c))))
         randind = random.sample(range(len(a)),int(len(a)/1000))
@@ -199,7 +199,7 @@ class graphwin(QWidget):
         self.setWindowTitle('Graph Sample')
         """ for vert in vertshull.simplices:
          """    #self.canvas.ax1.plot3D(ones[vert,0],ones[vert,1],ones[vert,2])
-        self.canvas.ax1.scatter(xs = anew,ys = bnew,zs = cnew,s = 2)
+        self.canvas.ax1.scatter(xs = a,ys = b,zs = c,s = 2)
         #self.canvas.view_init(elev = 90, azim = 0)
         layform.addWidget(self.canvas)
         self.setLayout(layform)
