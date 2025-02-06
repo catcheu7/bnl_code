@@ -9,7 +9,7 @@ from matplotlib.patches import Polygon as poly
 matplotlib.use('agg')
 plt.switch_backend('Agg')
 from PIL import Image
-from shapely import Polygon
+from shapely import Polygon as shapepoly
 #import ipython
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
@@ -68,7 +68,7 @@ class GDS():
                     if bound1[0][0] < t[0][i] < bound1[1][0] and bound1[0][1] < t[1][i] < bound1[1][1]:
                         adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
                         scaled = adjust//np.array([[1,1]]).transpose()
-                        cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',alpha = 0)
+                        cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',linewidth = 100, facecolor = 'none')
                         print(cor)
                         #plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
                         ax.add_patch(cor)
