@@ -168,12 +168,12 @@ class graphwin(QWidget):
         self.sample = 1-sample#.astype(np.float32)
         x,y,z = self.sample.shape
         
-        colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
+        """ colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
         colmat[:,:,:,0] = 0
         colmat[:,:,:,1] = 0
         colmat[:,:,:,2] = 255*self.sample/1
         colmat[:,:,:,3] = 50
-        #vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
+         """#vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
         """ widgl = gl.GLVolumeItem(colmat)
         widpyqt.addItem(widgl)
         viscan = scene.canvas.SceneCanvas('Voxel')
@@ -186,9 +186,9 @@ class graphwin(QWidget):
         #vertshull = ConvexHull(np.asarray(list(zip(a,b,c))))
         randind = random.sample(range(len(a)),int(len(a)/1000))
         anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
-        xdim = np.arange(0,x)
-        ydim = np.arange(0,y)
-        zdim = np.arange(0,z)
+        #xdim = np.arange(0,x)
+        #ydim = np.arange(0,y)
+        #zdim = np.arange(0,z)
         print((anew))
         #vol = scene.Volume(self.sample, parent = viewer.scene)
         """ vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
