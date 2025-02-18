@@ -66,9 +66,13 @@ class GDS():
                 t = np.array(m.exterior.xy)
                 for i in np.arange(0,t.shape[1]):
                     if bound1[0][0] < t[0][i] < bound1[1][0] and bound1[0][1] < t[1][i] < bound1[1][1]:
+                        #adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
+                        #scaled = adjust//np.array([[1,1]]).transpose()
+                        #cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',linewidth = 100, facecolor = 'none')
                         adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
-                        scaled = adjust//np.array([[1,1]]).transpose()
-                        cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',linewidth = 100, facecolor = 'none')
+                        scaled = np.matrix.round(adjust/np.array([[xsize, ysize]]).transpose())
+                        #print(scaled)
+                        cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',facecolor = 'none',linewidth = 100)
                         print(cor)
                         #plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
                         ax.add_patch(cor)
