@@ -61,6 +61,7 @@ class GDS():
         for a,coords in polys.items():
             plt.clf()
             ax = fig.add_subplot()
+            ax.set_clip_on(False)
             fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
