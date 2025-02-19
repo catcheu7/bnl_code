@@ -6,8 +6,8 @@ import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 from matplotlib.patches import Polygon as poly
-matplotlib.use('agg')
-plt.switch_backend('Agg')
+#matplotlib.use('agg')
+#plt.switch_backend('Agg')
 from PIL import Image
 from shapely import Polygon as shapepoly
 #import ipython
@@ -23,7 +23,7 @@ import pyqtgraph.opengl as gl
 from pyqtgraph import functions as funcs
 from pyqtgraph.opengl import GLScatterPlotItem as glscatter
 from vispy import scene, io, app
-app.use_app('PySide6')
+#app.use_app('PySide6')
 import scipy
 from scipy import ndimage
 from scipy.spatial import ConvexHull
