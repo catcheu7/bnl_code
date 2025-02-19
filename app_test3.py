@@ -90,7 +90,7 @@ class GDS():
             print(mat.shape)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
-            fig.savefig(layername,dpi = 100)
+            plt.imsave(layername,dpi = 100)
 
             plt.show()
         return filenames, matlist
