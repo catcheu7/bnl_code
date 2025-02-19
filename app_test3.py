@@ -45,7 +45,7 @@ class GDS():
 
     def graphingbound(diff,bound):
         plt.ioff()
-        fig = FigureCanvasQTAgg(figsize = (diff[0]/100,diff[1]/100),frameon = False)
+        fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('off')
         plt.xlim(0,diff[0])
