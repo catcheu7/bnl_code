@@ -56,6 +56,8 @@ class GDS():
         count = 0
         filenames = []
         matlist = []
+        xsize = 1
+        ysize = 1
         for a,coords in polys.items():
             plt.clf()
             ax = fig.add_subplot()
