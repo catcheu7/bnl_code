@@ -64,7 +64,7 @@ class GDS():
             plt.clf()
             ax = fig.add_subplot()
             ax.set_clip_on(False)
-            fig.canvas.draw()
+            #fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
                 m = shapepoly(b)
@@ -83,16 +83,17 @@ class GDS():
                         ax.add_patch(cor)
                         break
             count +=1
-            col = fig.canvas.buffer_rgba()
+            figcanvas.draw()
+            col = figcanvas.buffer_rgba()
             mat = np.asarray(col)
             print(col)
-            dim = fig.canvas.get_width_height()[::-1]
+            dim = figcanvas.get_width_height()[::-1]
             mat = np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
             matlist.append(mat)#[:,:,0])
-            print(mat.shape)
+            #print(mat.shape)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
-            plt.imsave(layername,dpi = 100)
+            fig.savefig(layername,dpi = 100)
 
             plt.show()
         return filenames, matlist
