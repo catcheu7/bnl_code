@@ -60,10 +60,9 @@ class GDS():
         xsize = 1
         ysize = 1
         figcanvas = FigureCanvasQTAgg(fig)
-        print(diff)
         for a,coords in polys.items():
             plt.clf()
-            fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
+            fig = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = False)
             plt.xlim(0,diff[0])
             plt.ylim(0,diff[1])
             ax = fig.add_subplot()
