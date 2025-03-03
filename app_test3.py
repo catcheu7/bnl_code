@@ -41,16 +41,16 @@ class GDS():
         polys = cell.get_polygons(by_spec = True)
         bound = cell.get_bounding_box()
         diff = bound[:,None] - bound[None,:]
-        print(bound)
+        #print(diff)
         return bound, diff,polys
 
-    def graphingbound(diff,bound):
+    def graphingbound(diff,bound1):
         plt.ioff()
         fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('on')
-        plt.xlim(0,diff[0])
-        plt.ylim(0,diff[1])
+        plt.xlim(0,bound1[0])
+        plt.ylim(0,bound1[1])
         return fig
 
     def layered(diff,bound,bound1,fig,polys):
