@@ -85,7 +85,7 @@ class GDS():
                         cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',facecolor = 'black',linewidth = 100)
                         print(cor)
                         #plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
-                        ax.add_patch(cor)
+                        ax.set_clip_path(cor)
                         break
             count +=1
             figcanvas.draw()
