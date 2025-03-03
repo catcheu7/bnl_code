@@ -44,13 +44,13 @@ class GDS():
         #print(diff)
         return bound, diff,polys
 
-    def graphingbound(diff,bound1):
+    def graphingbound(diff1,bound1):
         plt.ioff()
-        fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
+        fig = plt.figure(figsize = (diff1[0]/100,diff1[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('on')
-        plt.xlim(0,bound1[1][0])
-        plt.ylim(0,bound1[1][1])
+        plt.xlim(bound1[0][0],bound1[1][0])
+        plt.ylim(bound1[0][1],bound1[1][1])
         return fig
 
     def layered(diff,bound,bound1,fig,polys):
