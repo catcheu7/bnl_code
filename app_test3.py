@@ -5,6 +5,7 @@ import OpenGL
 import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
+from matplotlib.figure import Figure
 from matplotlib.patches import Polygon as poly
 #matplotlib.use('agg')
 #plt.switch_backend('Agg')
@@ -45,7 +46,7 @@ class GDS():
 
     def graphingbound(diff,bound):
         plt.ioff()
-        fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
+        fig = Figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('off')
         plt.xlim(0,diff[0])
