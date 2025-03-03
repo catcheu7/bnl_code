@@ -68,7 +68,7 @@ class GDS():
             plt.ylim(bound1[0][1] - bound[0][1],bound1[1][1] - bound[0][1])
             
             ax = fig.add_subplot()
-            ax.set_clip_on(False)
+            #ax.set_clip_on(False)
             #fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
