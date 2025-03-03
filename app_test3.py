@@ -44,11 +44,12 @@ class GDS():
         #print(diff)
         return bound, diff,polys
 
-    def graphingbound(diff1,bound1):
+    def graphingbound(diff1,bound1,bound):
         plt.ioff()
         fig = plt.figure(figsize = (diff1[0]/100,diff1[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('on')
+        print(bound)
         plt.xlim(bound1[0][0],bound1[1][0])
         plt.ylim(bound1[0][1],bound1[1][1])
         return fig
@@ -288,7 +289,7 @@ class MainWindow(QMainWindow):
             if boolcheck == False:
                 print('Error')
             else:
-                figcustom = GDS.graphingbound(diff1,bound1)
+                figcustom = GDS.graphingbound(diff1,bound1,bound)
                 layers, matcol = GDS.layered(diff,bound,bound1,figcustom,polys)
                 matlist = GDS.loadlayers(matcol)
                 self.sample, self.outline = GDS.loadsample(matlist)
