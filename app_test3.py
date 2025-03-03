@@ -41,7 +41,7 @@ class GDS():
         polys = cell.get_polygons(by_spec = True)
         bound = cell.get_bounding_box()
         diff = bound[:,None] - bound[None,:]
-        print(diff)
+        print(bound)
         return bound, diff,polys
 
     def graphingbound(diff,bound):
