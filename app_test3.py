@@ -54,20 +54,21 @@ class GDS():
         plt.ylim(bound1[0][1] - bound[0][1],bound1[1][1] - bound[0][1])
         return fig
 
-    def layered(diff,bound,bound1,fig,polys):
+    def layered(diff,bound,bound1,polys):
         count = 0
         filenames = []
         matlist = []
         xsize = 1
         ysize = 1
-        figcanvas = FigureCanvasQTAgg(fig)
+        
         for a,coords in polys.items():
-            fig = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = True)
+            figa = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = True)
             plt.axis('on')
             plt.xlim(bound1[0][0] - bound[0][0],bound1[1][0] - bound[0][0])
             plt.ylim(bound1[0][1] - bound[0][1],bound1[1][1] - bound[0][1])
+            figcanvas = FigureCanvasQTAgg(figa)
             
-            ax = fig.add_subplot()
+            ax = figa.add_subplot()
             #ax.set_clip_on(False)
             #fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
@@ -98,7 +99,7 @@ class GDS():
             #print(mat.shape)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
-            fig.savefig(layername,dpi = 100)
+            figa.savefig(layername,dpi = 100)
 
             plt.show()
         return filenames, matlist
@@ -291,7 +292,7 @@ class MainWindow(QMainWindow):
                 print('Error')
             else:
                 figcustom = GDS.graphingbound(diff1,bound1,bound)
-                layers, matcol = GDS.layered(diff,bound,bound1,figcustom,polys)
+                layers, matcol = GDS.layered(diff,bound,bound1,polys)
                 matlist = GDS.loadlayers(matcol)
                 self.sample, self.outline = GDS.loadsample(matlist)
                 if self.sample.all() != None:
