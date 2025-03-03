@@ -46,7 +46,7 @@ class GDS():
 
     def graphingbound(diff,bound):
         plt.ioff()
-        fig = Figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
+        fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('off')
         plt.xlim(0,diff[0])
@@ -59,7 +59,7 @@ class GDS():
         matlist = []
         xsize = 1
         ysize = 1
-        figcanvas = FigureCanvasQTAgg()
+        figcanvas = FigureCanvasQTAgg(fig)
         for a,coords in polys.items():
             plt.clf()
             ax = fig.add_subplot()
