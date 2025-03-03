@@ -63,6 +63,8 @@ class GDS():
         for a,coords in polys.items():
             plt.clf()
             fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
+            plt.xlim(0,diff[0])
+            plt.ylim(0,diff[1])
             ax = fig.add_subplot()
             ax.set_clip_on(False)
             #fig.canvas.draw()
