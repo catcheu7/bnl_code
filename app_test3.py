@@ -48,7 +48,7 @@ class GDS():
         plt.ioff()
         fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
-        plt.axis('off')
+        plt.axis('on')
         plt.xlim(0,diff[0])
         plt.ylim(0,diff[1])
         return fig
@@ -62,6 +62,7 @@ class GDS():
         figcanvas = FigureCanvasQTAgg(fig)
         for a,coords in polys.items():
             plt.clf()
+            fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
             ax = fig.add_subplot()
             ax.set_clip_on(False)
             #fig.canvas.draw()
@@ -76,7 +77,7 @@ class GDS():
                         #cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',linewidth = 100, facecolor = 'none')
                         adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
                         scaled = np.matrix.round(adjust/np.array([[xsize, ysize]]).transpose())
-                        print(scaled)
+                        #print(scaled)
                         cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',facecolor = 'black',linewidth = 100)
                         print(cor)
                         #plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
