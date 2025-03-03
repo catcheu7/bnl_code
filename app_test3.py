@@ -53,7 +53,7 @@ class GDS():
         plt.ylim(0,diff[1])
         return fig
 
-    def layered(bound,bound1,fig,polys):
+    def layered(diff,bound,bound1,fig,polys):
         count = 0
         filenames = []
         matlist = []
@@ -287,7 +287,7 @@ class MainWindow(QMainWindow):
                 print('Error')
             else:
                 figcustom = GDS.graphingbound(diff1,bound1)
-                layers, matcol = GDS.layered(bound,bound1,figcustom,polys)
+                layers, matcol = GDS.layered(diff,bound,bound1,figcustom,polys)
                 matlist = GDS.loadlayers(matcol)
                 self.sample, self.outline = GDS.loadsample(matlist)
                 if self.sample.all() != None:
