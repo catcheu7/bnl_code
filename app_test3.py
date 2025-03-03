@@ -50,8 +50,8 @@ class GDS():
         ax = fig.add_subplot()
         plt.axis('on')
         print(bound)
-        plt.xlim(bound1[0][0],bound1[1][0])
-        plt.ylim(bound1[0][1],bound1[1][1])
+        plt.xlim(bound1[0][0] - bound[0][0],bound1[1][0] - bound[0][0])
+        plt.ylim(bound1[0][1] - bound[0][1],bound1[1][1] - bound[0][1])
         return fig
 
     def layered(diff,bound,bound1,fig,polys):
