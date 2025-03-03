@@ -60,6 +60,7 @@ class GDS():
         xsize = 1
         ysize = 1
         figcanvas = FigureCanvasQTAgg(fig)
+        print(diff)
         for a,coords in polys.items():
             plt.clf()
             fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
