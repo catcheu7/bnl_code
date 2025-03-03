@@ -62,7 +62,6 @@ class GDS():
         ysize = 1
         figcanvas = FigureCanvasQTAgg(fig)
         for a,coords in polys.items():
-            plt.clf()
             fig = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = True)
             plt.axis('on')
             plt.xlim(bound1[0][0] - bound[0][0],bound1[1][0] - bound[0][0])
