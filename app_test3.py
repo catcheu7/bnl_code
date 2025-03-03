@@ -49,8 +49,8 @@ class GDS():
         fig = plt.figure(figsize = (diff[0]/100,diff[1]/100),frameon = False)
         ax = fig.add_subplot()
         plt.axis('on')
-        plt.xlim(0,bound1[0])
-        plt.ylim(0,bound1[1])
+        plt.xlim(0,bound1[1][0])
+        plt.ylim(0,bound1[1][1])
         return fig
 
     def layered(diff,bound,bound1,fig,polys):
