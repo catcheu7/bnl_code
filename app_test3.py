@@ -74,6 +74,7 @@ class GDS():
                 m = shapepoly(b)
                 t = np.array(m.exterior.xy)
                 for i in np.arange(0,t.shape[1]):
+                    print(bound1)
                     if bound1[0][0] < t[0][i] < bound1[1][0] and bound1[0][1] < t[1][i] < bound1[1][1]:
                         #adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
                         #scaled = adjust//np.array([[1,1]]).transpose()
