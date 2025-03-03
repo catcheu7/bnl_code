@@ -59,6 +59,7 @@ class GDS():
         matlist = []
         xsize = 1
         ysize = 1
+        canvas = FigureCanvasQTAgg()
         for a,coords in polys.items():
             plt.clf()
             ax = fig.add_subplot()
