@@ -95,14 +95,14 @@ class GDS():
             mat = np.asarray(col)
             print(col)
             dim = figcanvas.get_width_height()[::-1]
-            mat = Image.fromarray(col)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
+            mat = Image.fromarray(mat)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
             matlist.append(mat)#[:,:,0])
             #print(mat.shape)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             figa.savefig(layername,dpi = 100)
 
-            plt.show()
+            mat.show()
         return filenames, matlist
 
     def checkbounds(self,x1,x2,y1,y2,bound,diff):
