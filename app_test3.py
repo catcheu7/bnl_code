@@ -2,6 +2,7 @@ import sys
 import random
 import random
 import OpenGL
+from PIL import Image
 import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
@@ -94,7 +95,7 @@ class GDS():
             mat = np.asarray(col)
             print(col)
             dim = figcanvas.get_width_height()[::-1]
-            mat = np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
+            mat = Image.fromarray(col)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
             matlist.append(mat)#[:,:,0])
             #print(mat.shape)
             layername = 'layer' + str(count) + '.png'
