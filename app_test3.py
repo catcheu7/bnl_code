@@ -100,7 +100,8 @@ class GDS():
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             figa.savefig(layername,dpi = 100)
-            figa.show()
+
+            plt.show()
         return filenames, matlist
 
     def checkbounds(self,x1,x2,y1,y2,bound,diff):
