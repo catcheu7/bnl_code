@@ -100,7 +100,7 @@ class GDS():
             #print(mat.shape)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
-            figa.savefig('catcheu7/bnl_code' + layername,dpi = 100)
+            figa.savefig('C/Users/ccheu/' + layername,dpi = 100)
 
             mat.show()
         return filenames, matlist
