@@ -102,7 +102,7 @@ class GDS():
             filenames.append(layername)
             figa.savefig('C/Users/ccheu/' + layername,dpi = 100)
 
-            mat.show()
+            #mat.show()
         return filenames, matlist
 
     def checkbounds(self,x1,x2,y1,y2,bound,diff):
