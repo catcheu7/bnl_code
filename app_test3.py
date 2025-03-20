@@ -94,13 +94,14 @@ class GDS():
             #col = figa.buffer_rgba()
             #mat = np.asarray(col)
             #print(col)
-            dim = figa.get_width_height()[::-1]
-            mat = Image.fromarray(mat)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
-            matlist.append(mat)#[:,:,0])
+            #dim = figa.get_width_height()[::-1]
+            #mat = Image.fromarray(mat)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
+            #matlist.append(mat)#[:,:,0])
             #print(mat.shape)
             layername = 'layer' + str(count) + '.png'
             filenames.append(layername)
             figa.savefig('C/Users/ccheu/' + layername,dpi = 100)
+            matlist.append(layername)
 
             #mat.show()
         return filenames, matlist
