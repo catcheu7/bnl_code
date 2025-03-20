@@ -67,7 +67,7 @@ class GDS():
             plt.axis('on')
             plt.xlim(bound1[0][0] - bound[0][0],bound1[1][0] - bound[0][0])
             plt.ylim(bound1[0][1] - bound[0][1],bound1[1][1] - bound[0][1])
-            figcanvas = FigureCanvasQTAgg(figa)
+            #figcanvas = FigureCanvasQTAgg(figa)
             
             ax = figa.add_subplot()
             #ax.set_clip_on(False)
@@ -90,11 +90,11 @@ class GDS():
                         #ax.set_clip_path(cor)
                         break
             count +=1
-            figcanvas.draw()
-            col = figcanvas.buffer_rgba()
+            #figcanvas.draw()
+            col = figa.buffer_rgba()
             mat = np.asarray(col)
             print(col)
-            dim = figcanvas.get_width_height()[::-1]
+            dim = figa.get_width_height()[::-1]
             mat = Image.fromarray(mat)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
             matlist.append(mat)#[:,:,0])
             #print(mat.shape)
