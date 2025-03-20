@@ -91,9 +91,9 @@ class GDS():
                         break
             count +=1
             #figcanvas.draw()
-            col = figa.buffer_rgba()
-            mat = np.asarray(col)
-            print(col)
+            #col = figa.buffer_rgba()
+            #mat = np.asarray(col)
+            #print(col)
             dim = figa.get_width_height()[::-1]
             mat = Image.fromarray(mat)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
             matlist.append(mat)#[:,:,0])
