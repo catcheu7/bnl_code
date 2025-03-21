@@ -7,11 +7,11 @@ import gdspy,numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 from matplotlib.figure import Figure
-from matplotlib.patches import Polygon as poly
+#from matplotlib.patches import Polygon as poly
 #matplotlib.use('agg')
 #plt.switch_backend('Agg')
 from PIL import Image
-#from shapely import Polygon as shapepoly
+from shapely import Polygon as shapepoly
 #import ipython
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
