@@ -88,7 +88,7 @@ class GDS():
                     print(cor)
                     plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
                         #ax.set_clip_path(cor)
-                    break
+                    #break
             count +=1
             #figcanvas.draw()
             #col = figa.buffer_rgba()
