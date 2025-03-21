@@ -11,7 +11,7 @@ from matplotlib.patches import Polygon as poly
 #matplotlib.use('agg')
 #plt.switch_backend('Agg')
 from PIL import Image
-from shapely import Polygon as shapepoly
+#from shapely import Polygon as shapepoly
 #import ipython
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
@@ -74,7 +74,7 @@ class GDS():
             #fig.canvas.draw()
             colors = ['black','red','blue','magenta','green','orange']
             for b in coords:
-                m = shapepoly(b)
+                m = poly(b)
                 t = np.array(m.exterior.xy)
                 for i in np.arange(0,t.shape[1]):
                     if bound1[0][0] < t[0][i] < bound1[1][0] and bound1[0][1] < t[1][i] < bound1[1][1]:
