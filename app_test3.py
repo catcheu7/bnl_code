@@ -11,7 +11,7 @@ from matplotlib.figure import Figure
 #matplotlib.use('agg')
 #plt.switch_backend('Agg')
 from PIL import Image
-from shapely import Polygon as shapepoly
+from shapely import Polygon as poly
 #import ipython
 from PySide6.QtWidgets import QApplication, QWidget, QDialog, QMainWindow, QPushButton, QFileDialog, QLineEdit, QFormLayout, QLabel
 from PySide6.QtGui import QDoubleValidator
