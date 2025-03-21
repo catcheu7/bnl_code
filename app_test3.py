@@ -83,10 +83,10 @@ class GDS():
                         #cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',linewidth = 100, facecolor = 'none')
                     adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
                     scaled = np.matrix.round(adjust/np.array([[xsize, ysize]]).transpose())
-                        #print(scaled)
+                    print(scaled)
                     cor = poly(list(zip(scaled[0],scaled[1])))
                     print(cor)
-                    plt.fill(*cor.exterior.xy, color = 'none')#color = colors[count])
+                    plt.fill(*cor.exterior.xy, color = 'red')#color = colors[count])
                         #ax.set_clip_path(cor)
                     #break
             count +=1
