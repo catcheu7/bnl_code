@@ -55,55 +55,41 @@ class GDS():
         plt.ylim(bound1[0][1] - bound[0][1],bound1[1][1] - bound[0][1])
         return fig
 
-    def layered(diff,bound,bound1,polys):
+    def layered(diff, bound, bound1, polys):
         count = 0
         filenames = []
         matlist = []
         xsize = 1
         ysize = 1
-        
-        for a,coords in polys.items():
-            figa = plt.figure(figsize = (diff[1][0][0]/100,diff[1][0][1]/100),frameon = True)
+
+        for a, coords in polys.items():
+            figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
             plt.axis('on')
-            plt.xlim(bound1[0][0] - bound[0][0],bound1[1][0] - bound[0][0])
-            plt.ylim(bound1[0][1] - bound[0][1],bound1[1][1] - bound[0][1])
-            #figcanvas = FigureCanvasQTAgg(figa)
-            
+            plt.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
+            plt.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
+
             ax = figa.add_subplot()
-            #ax.set_clip_on(False)
-            #fig.canvas.draw()
-            colors = ['black','red','blue','magenta','green','orange']
+            colors = ['black', 'red', 'blue', 'magenta', 'green', 'orange']
             for b in coords:
                 m = poly(b)
                 t = np.array(m.exterior.xy)
-                for i in np.arange(0,t.shape[1]):
-                    #if bound1[0][0] < t[0][i] < bound1[1][0] and bound1[0][1] < t[1][i] < bound1[1][1]:
-                        #adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
-                        #scaled = adjust//np.array([[1,1]]).transpose()
-                        #cor = poly(list(zip(scaled[0],scaled[1])),edgecolor = 'r',linewidth = 100, facecolor = 'none')
-                    adjust = t - np.tile(np.array([[bound[0][0],bound[0][1]]]).transpose(),(1,t.shape[1]))
-                    scaled = np.matrix.round(adjust/np.array([[xsize, ysize]]).transpose())
-                    print(scaled)
-                    cor = poly(list(zip(scaled[0],scaled[1])))
-                    print(cor)
-                    plt.fill(*cor.exterior.xy, color = 'red')#color = colors[count])
-                        #ax.set_clip_path(cor)
-                    #break
-            count +=1
-            #figcanvas.draw()
-            #col = figa.buffer_rgba()
-            #mat = np.asarray(col)
-            #print(col)
-            #dim = figa.get_width_height()[::-1]
-            #mat = Image.fromarray(mat)#np.frombuffer(col,dtype = np.uint8).reshape(dim + (4,))
-            #matlist.append(mat)#[:,:,0])
-            #print(mat.shape)
-            layername = 'layer' + str(count) + '.png'
+                adjust = t - np.tile(np.array([[bound[0][0], bound[0][1]]]).transpose(), (1, t.shape[1]))
+                scaled = np.round(adjust / np.array([[xsize, ysize]]).transpose())
+                print("Scaled Coordinates:", scaled)
+
+                cor = poly(list(zip(scaled[0], scaled[1])))
+                if cor.is_valid:
+                    x, y = cor.exterior.xy
+                    plt.fill(x, y, color='red')  # Plot the polygon
+                else:
+                    print("Invalid Polygon:", cor)
+
+            count += 1
+            layername = f'layer{count}.png'
             filenames.append(layername)
-            figa.savefig('C:\\Users\\ccheu\\' + layername,dpi = 100)
+            figa.savefig(layername, dpi=100)
             matlist.append(layername)
 
-            #mat.show()
         return filenames, matlist
 
     def checkbounds(self,x1,x2,y1,y2,bound,diff):
