@@ -70,7 +70,7 @@ class GDS:
             # Save the figure as an image
             count += 1
             filename = f"layer_{count}.png"
-            plt.savefig("C:\\Users\\ccheu" + filename, dpi=100)
+            plt.savefig("C:\\Users\\ccheu\\" + filename, dpi=100)
             filenames.append(filename)  # Add the filename to the list
             plt.close(figa)  # Close the figure to free memory
 
