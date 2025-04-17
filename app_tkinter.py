@@ -47,7 +47,7 @@ class GDS:
 
         for layer_id, coords in polys.items():
             # Create a new Matplotlib figure for the layer
-            figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
+            figa = plt.figure(figsize=(diff[0] / 100, diff[1] / 100), frameon=True)
             plt.axis('on')
             plt.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
             plt.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
