@@ -64,11 +64,8 @@ class GDS:
 
                 # Create a new polygon with scaled coordinates
                 scaled_polygon = poly(list(zip(scaled[0], scaled[1])))
-                if scaled_polygon.is_valid:
-                    x, y = scaled_polygon.exterior.xy
-                    plt.fill(x, y, color='red')  # Plot the polygon
-                else:
-                    print(f"Invalid Polygon in Layer {layer_id}: {scaled_polygon}")
+                x, y = scaled_polygon.exterior.xy
+                plt.fill(x, y, color='red')  # Plot the polygon
 
             # Save the figure as an image
             count += 1
