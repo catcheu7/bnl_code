@@ -159,7 +159,7 @@ class MainWindow:
         diff1 = [(x2 - x1), (y2 - y1)]
 
         # Call the layered function to generate and save the layers
-        filenames = GDS.layered(diff1, bound, bound1, polys)
+        filenames = GDS.layered(diff, bound, bound1, polys)
 
         # Display a success message with the saved filenames
         messagebox.showinfo("Success", f"Layers saved as:\n{', '.join(filenames)}")
