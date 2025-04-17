@@ -28,37 +28,54 @@ class GDS:
 
     @staticmethod
     def layered(diff, bound, bound1, polys):
+        """
+        Generates 2D cross-sections for each layer, saves them as images, and returns the filenames.
+
+        Args:
+            diff (list): Difference in bounds for scaling.
+            bound (list): Original bounding box coordinates.
+            bound1 (list): Adjusted bounding box coordinates.
+            polys (dict): Dictionary of polygons representing the layers.
+
+        Returns:
+            list: Filenames of the saved images.
+        """
         count = 0
-        filenames = []
-        matlist = []
+        filenames = []  # List to store filenames of saved images
         xsize = 1
         ysize = 1
 
-        for a, coords in polys.items():
+        for layer_id, coords in polys.items():
+            # Create a new Matplotlib figure for the layer
             figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
             plt.axis('on')
             plt.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
             plt.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
 
             ax = figa.add_subplot()
-            for b in coords:
-                m = poly(b)
-                t = np.array(m.exterior.xy)
+            for polygon_coords in coords:
+                # Create a Shapely polygon and scale it
+                polygon = poly(polygon_coords)
+                t = np.array(polygon.exterior.xy)
                 adjust = t - np.tile(np.array([[bound[0][0], bound[0][1]]]).transpose(), (1, t.shape[1]))
                 scaled = np.round(adjust / np.array([[xsize, ysize]]).transpose())
 
-                cor = poly(list(zip(scaled[0], scaled[1])))
-                if cor.is_valid:
-                    x, y = cor.exterior.xy
+                # Create a new polygon with scaled coordinates
+                scaled_polygon = poly(list(zip(scaled[0], scaled[1])))
+                if scaled_polygon.is_valid:
+                    x, y = scaled_polygon.exterior.xy
                     plt.fill(x, y, color='red')  # Plot the polygon
                 else:
-                    print("Invalid Polygon:", cor)
+                    print(f"Invalid Polygon in Layer {layer_id}: {scaled_polygon}")
 
+            # Save the figure as an image
             count += 1
-            filenames.append(f"layer{count}.png")
-            matlist.append(f"layer{count}.png")
+            filename = f"layer_{count}.png"
+            plt.savefig(filename, dpi=100)
+            filenames.append(filename)  # Add the filename to the list
+            plt.close(figa)  # Close the figure to free memory
 
-        return filenames, matlist
+        return filenames
 
     @staticmethod
     def loadsample(layers):
@@ -139,10 +156,11 @@ class MainWindow:
         bound1 = [(x1, y1), (x2, y2)]
         diff1 = [(x2 - x1), (y2 - y1)]
 
-        fig = GDS.graphingbound(diff1, bound1, bound)
-        canvas = FigureCanvasTkAgg(fig, master=self.canvas_frame)
-        canvas.draw()
-        canvas.get_tk_widget().pack()
+        # Call the layered function to generate and save the layers
+        filenames = GDS.layered(diff1, bound, bound1, polys)
+
+        # Display a success message with the saved filenames
+        messagebox.showinfo("Success", f"Layers saved as:\n{', '.join(filenames)}")
 
 
 if __name__ == "__main__":
