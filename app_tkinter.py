@@ -11,9 +11,11 @@ class GDS:
     @staticmethod
     def loadgds(file_path):
         # Simulate loading GDS data
-        bound = np.array([[0, 0], [100, 100]])
-        diff = bound[:, None] - bound[None, :]
-        polys = {1: [np.array([[10, 10], [20, 10], [20, 20], [10, 20]])]}
+        test = gdspy.GdsLibrary(infile = setter)
+        cell = test.top_level()[0]
+        polys = cell.get_polygons(by_spec = True)
+        bound = cell.get_bounding_box()
+        diff = bound[:,None] - bound[None,:]
         return bound, diff, polys
 
     @staticmethod
@@ -47,7 +49,7 @@ class GDS:
 
         for layer_id, coords in polys.items():
             # Create a new Matplotlib figure for the layer
-            figa = plt.figure(figsize=(diff[0] / 100, diff[1] / 100), frameon=True)
+            figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
             plt.axis('on')
             plt.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
             plt.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
