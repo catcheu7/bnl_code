@@ -11,7 +11,7 @@ class GDS:
     @staticmethod
     def loadgds(file_path):
         # Simulate loading GDS data
-        test = gdspy.GdsLibrary(infile = setter)
+        test = gdspy.GdsLibrary(infile = file_path)
         cell = test.top_level()[0]
         polys = cell.get_polygons(by_spec = True)
         bound = cell.get_bounding_box()
