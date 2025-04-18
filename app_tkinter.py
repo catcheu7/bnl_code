@@ -52,8 +52,8 @@ class GDS:
             figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
             plt.axis('off')
             ax = figa.add_subplot()
-            ax.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
-            ax.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
+            plt.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
+            plt.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
 
             ax = figa.add_subplot()
             for polygon_coords in coords:
