@@ -54,6 +54,7 @@ class GDS:
             ax = figa.add_subplot()
             ax.set_xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
             ax.set_ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
+            plt.autoscale(False)
 
             ax = figa.add_subplot()
             for polygon_coords in coords:
