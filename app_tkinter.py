@@ -50,9 +50,10 @@ class GDS:
         for layer_id, coords in polys.items():
             # Create a new Matplotlib figure for the layer
             figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
-            plt.axis('on')
-            plt.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
-            plt.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
+            plt.axis('off')
+            ax = figa.add_subplot()
+            ax.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
+            ax.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
 
             ax = figa.add_subplot()
             for polygon_coords in coords:
@@ -70,7 +71,7 @@ class GDS:
             # Save the figure as an image
             count += 1
             filename = f"layer_{count}.png"
-            plt.savefig("C:\\Users\\ccheu\\" + filename, dpi=100)
+            plt.savefig("C:\\Users\\ccheu\\" + filename, dpi=100,bbox_inches = 'tight',pad_inches = 0.1))
             filenames.append(filename)  # Add the filename to the list
             plt.close(figa)  # Close the figure to free memory
 
