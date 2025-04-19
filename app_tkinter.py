@@ -19,16 +19,6 @@ class GDS:
         return bound, diff, polys
 
     @staticmethod
-    def graphingbound(diff1, bound1, bound):
-        plt.ioff()
-        fig = plt.figure(figsize=(diff1[0] / 100, diff1[1] / 100), frameon=False)
-        ax = fig.add_subplot()
-        plt.axis('on')
-        plt.xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
-        plt.ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
-        return fig
-
-    @staticmethod
     def layered(diff, bound, bound1, polys):
         """
         Generates 2D cross-sections for each layer, saves them as images, and returns the filenames.
@@ -145,9 +135,6 @@ class MainWindow:
 
         self.plot_button = Button(root, text="Plot Graph", command=self.plot_graph)
         self.plot_button.pack()
-
-        self.canvas_frame = Frame(root)
-        self.canvas_frame.pack()
 
     def load_gds_file(self):
         file_path = filedialog.askopenfilename(filetypes=[("GDS Files", "*.gds")])
