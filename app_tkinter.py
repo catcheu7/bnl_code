@@ -83,7 +83,12 @@ class GDS:
     def loadsample(layers):
         samplist = ()
         outline = ()
-        for b in layers:
+        matlist = ()
+        for a in layers:
+            #matimg = imreader(a)/255
+            boolmat = (a != 1).astype(int)
+            matlist += (boolmat,)
+        for b in matlist:
             d = ndimage.binary_fill_holes(b).astype(int)
             samp = np.broadcast_to(d, (5, d.shape[0], d.shape[1]))
             sampout = np.broadcast_to(b, (5, b.shape[0], b.shape[1]))
