@@ -97,61 +97,6 @@ class GDS:
         sample = np.concatenate(samplist, axis=0)
         sampleout = np.concatenate(outline, axis=0)
         return sample, sampleout
-    
-    class graphsample(FigureCanvasQTAgg):
-    def __init__(self):
-        
-        ax = plt.figure()
-        self.ax1 = ax.add_subplot(projection = '3d')
-        super().__init__(ax)
-        
-class graphwin(QWidget):
-    def __init__(self,sample):
-        
-        super().__init__()
-        layform = QFormLayout(self)
-        #widgraph = pyqtgraph.PlotWidget()
-        #widpyqt = gl.GLViewWidget()
-        #widpyqt.show()
-        self.sample = 1-sample#.astype(np.float32)
-        x,y,z = self.sample.shape
-        
-        """ colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
-        colmat[:,:,:,0] = 0
-        colmat[:,:,:,1] = 0
-        colmat[:,:,:,2] = 255*self.sample/1
-        colmat[:,:,:,3] = 50
-         """#vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
-        """ widgl = gl.GLVolumeItem(colmat)
-        widpyqt.addItem(widgl)
-        viscan = scene.canvas.SceneCanvas('Voxel')
-        gridview = viscan.central_widget.add_grid()
-        viewer = gridview.add_view() """
-        self.canvas = graphsample()
-        a,b,c = np.where(self.sample == 1)
-        print(len(a))
-        #ones = np.asarray(list(zip(a,b,c)))
-        
-        #vertshull = ConvexHull(np.asarray(list(zip(a,b,c))))
-        randind = random.sample(range(len(a)),int(len(a)/1000))
-        anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
-        #xdim = np.arange(0,x)
-        #ydim = np.arange(0,y)
-        #zdim = np.arange(0,z)
-        print((anew))
-        #vol = scene.Volume(self.sample, parent = viewer.scene)
-        """ vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
-        vol2 = mrpy.simpleVolumeToDenseGrid(vol)
-        iso = mrpy.gridToMesh(vol2)
-        mesh = Poly3DCollection(iso)
-        self.canvas.add_collection3d(mesh) """
-        self.setWindowTitle('Graph Sample')
-        """ for vert in vertshull.simplices:
-         """    #self.canvas.ax1.plot3D(ones[vert,0],ones[vert,1],ones[vert,2])
-        self.canvas.ax1.scatter(xs = a,ys = b,zs = c,s = 2)
-        #self.canvas.view_init(elev = 90, azim = 0)
-        layform.addWidget(self.canvas)
-        self.setLayout(layform)
 
 
 class MainWindow:
