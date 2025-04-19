@@ -1,21 +1,21 @@
-import sys,gdspy
+import sys, gdspy
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from shapely.geometry import Polygon as poly
 from scipy import ndimage
-from tkinter import Tk, Label, Button, Entry, filedialog, Frame, messagebox
+from tkinter import Tk, Label, Button, Entry, filedialog, Frame, messagebox, Toplevel
 
 
 class GDS:
     @staticmethod
     def loadgds(file_path):
         # Simulate loading GDS data
-        test = gdspy.GdsLibrary(infile = file_path)
+        test = gdspy.GdsLibrary(infile=file_path)
         cell = test.top_level()[0]
-        polys = cell.get_polygons(by_spec = True)
+        polys = cell.get_polygons(by_spec=True)
         bound = cell.get_bounding_box()
-        diff = bound[:,None] - bound[None,:]
+        diff = bound[:, None] - bound[None, :]
         return bound, diff, polys
 
     @staticmethod
@@ -32,15 +32,6 @@ class GDS:
     def layered(diff, bound, bound1, polys):
         """
         Generates 2D cross-sections for each layer, saves them as images, and returns the filenames.
-
-        Args:
-            diff (list): Difference in bounds for scaling.
-            bound (list): Original bounding box coordinates.
-            bound1 (list): Adjusted bounding box coordinates.
-            polys (dict): Dictionary of polygons representing the layers.
-
-        Returns:
-            list: Filenames of the saved images.
         """
         count = 0
         filenames = []  # List to store filenames of saved images
@@ -48,46 +39,41 @@ class GDS:
         ysize = 1
 
         for layer_id, coords in polys.items():
-            # Create a new Matplotlib figure for the layer
             figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
-            #plt.axis('off')
             ax = figa.add_subplot()
             ax.set_xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
             ax.set_ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
             plt.autoscale(False)
 
-            ax = figa.add_subplot()
             for polygon_coords in coords:
-                # Create a Shapely polygon and scale it
                 polygon = poly(polygon_coords)
                 t = np.array(polygon.exterior.xy)
                 adjust = t - np.tile(np.array([[bound[0][0], bound[0][1]]]).transpose(), (1, t.shape[1]))
                 scaled = np.round(adjust / np.array([[xsize, ysize]]).transpose())
-
-                # Create a new polygon with scaled coordinates
                 scaled_polygon = poly(list(zip(scaled[0], scaled[1])))
                 x, y = scaled_polygon.exterior.xy
-                plt.fill(x, y, color='red')  # Plot the polygon
+                plt.fill(x, y, color='red')
 
-            # Save the figure as an image
             count += 1
             filename = f"layer_{count}.png"
-            plt.savefig("C:\\Users\\ccheu\\" + filename, dpi=100,bbox_inches = 'tight',pad_inches = 0.1)
-            filenames.append(filename)  # Add the filename to the list
-            plt.show()
-            plt.close(figa)  # Close the figure to free memory
+            plt.savefig(filename, dpi=100, bbox_inches='tight', pad_inches=0.1)
+            filenames.append(filename)
+            plt.close(figa)
 
         return filenames
 
     @staticmethod
     def loadsample(layers):
+        """
+        Processes the layers into a sample and its outline.
+        """
         samplist = ()
         outline = ()
-        matlist = ()
-        for a in layers:
-            #matimg = imreader(a)/255
-            boolmat = (a != 1).astype(int)
-            matlist += (boolmat,)
+        matlist = []
+        for filename in layers:
+            matimg = plt.imread(filename)[:, :, 0]  # Assuming grayscale image
+            boolmat = (matimg != 1).astype(int)
+            matlist.append(boolmat)
         for b in matlist:
             d = ndimage.binary_fill_holes(b).astype(int)
             samp = np.broadcast_to(d, (5, d.shape[0], d.shape[1]))
@@ -98,60 +84,31 @@ class GDS:
         sampleout = np.concatenate(outline, axis=0)
         return sample, sampleout
 
-    class graphsample(FigureCanvasQTAgg):
-    def __init__(self):
-        
-        ax = plt.figure()
-        self.ax1 = ax.add_subplot(projection = '3d')
-        super().__init__(ax)
-        
-class graphwin(QWidget):
-    def __init__(self,sample):
-        
-        super().__init__()
-        layform = QFormLayout(self)
-        #widgraph = pyqtgraph.PlotWidget()
-        #widpyqt = gl.GLViewWidget()
-        #widpyqt.show()
-        self.sample = 1-sample#.astype(np.float32)
-        x,y,z = self.sample.shape
-        
-        """ colmat = np.zeros((self.sample.shape+(4,)),dtype = np.uint8)
-        colmat[:,:,:,0] = 0
-        colmat[:,:,:,1] = 0
-        colmat[:,:,:,2] = 255*self.sample/1
-        colmat[:,:,:,3] = 50
-         """#vert,face,norm,other = skimage.measure.marching_cubes(self.sample)
-        """ widgl = gl.GLVolumeItem(colmat)
-        widpyqt.addItem(widgl)
-        viscan = scene.canvas.SceneCanvas('Voxel')
-        gridview = viscan.central_widget.add_grid()
-        viewer = gridview.add_view() """
-        self.canvas = graphsample()
-        a,b,c = np.where(self.sample == 1)
-        print(len(a))
-        #ones = np.asarray(list(zip(a,b,c)))
-        
-        #vertshull = ConvexHull(np.asarray(list(zip(a,b,c))))
-        randind = random.sample(range(len(a)),int(len(a)/1000))
-        anew,bnew,cnew = a[[randind]],b[[randind]],c[[randind]]
-        #xdim = np.arange(0,x)
-        #ydim = np.arange(0,y)
-        #zdim = np.arange(0,z)
-        print((anew))
-        #vol = scene.Volume(self.sample, parent = viewer.scene)
-        """ vol = mrnumpy.simpleVolumeFrom3Darray(self.sample)
-        vol2 = mrpy.simpleVolumeToDenseGrid(vol)
-        iso = mrpy.gridToMesh(vol2)
-        mesh = Poly3DCollection(iso)
-        self.canvas.add_collection3d(mesh) """
-        self.setWindowTitle('Graph Sample')
-        """ for vert in vertshull.simplices:
-         """    #self.canvas.ax1.plot3D(ones[vert,0],ones[vert,1],ones[vert,2])
-        self.canvas.ax1.scatter(xs = a,ys = b,zs = c,s = 2)
-        #self.canvas.view_init(elev = 90, azim = 0)
-        layform.addWidget(self.canvas)
-        self.setLayout(layform)
+
+class GraphSample(FigureCanvasTkAgg):
+    def __init__(self, sample, master=None):
+        """
+        Displays a 3D voxel graph of the sample.
+        """
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        ax.voxels(sample, facecolors='blue', edgecolors='gray')
+        super().__init__(fig, master)
+
+
+class GraphWin(Toplevel):
+    def __init__(self, sample, master=None):
+        """
+        Creates a new window to display the 3D voxel graph.
+        """
+        super().__init__(master)
+        self.title("3D Voxel Graph")
+        self.geometry("800x600")
+
+        # Add the 3D voxel graph
+        canvas = GraphSample(sample, master=self)
+        canvas.draw()
+        canvas.get_tk_widget().pack(fill="both", expand=True)
 
 
 class MainWindow:
@@ -221,8 +178,11 @@ class MainWindow:
         # Call the layered function to generate and save the layers
         filenames = GDS.layered(diff, bound, bound1, polys)
 
-        # Display a success message with the saved filenames
-        messagebox.showinfo("Success", f"Layers saved as:\n{', '.join(filenames)}")
+        # Pass the filenames to loadsample and get the sample
+        sample, _ = GDS.loadsample(filenames)
+
+        # Open the 3D voxel graph in a new window
+        GraphWin(sample, master=self.root)
 
 
 if __name__ == "__main__":
