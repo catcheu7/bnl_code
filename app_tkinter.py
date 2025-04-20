@@ -46,7 +46,7 @@ class GDS:
 
             count += 1
             filename = f"layer_{count}.png"
-            plt.savefig(filename, dpi=100, bbox_inches='tight', pad_inches=0.1)
+            plt.savefig(filename, dpi=1, bbox_inches='tight', pad_inches=0.1)
             filenames.append(filename)
             plt.close(figa)
 
