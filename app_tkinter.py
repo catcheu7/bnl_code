@@ -49,7 +49,7 @@ class GDS:
             filename = f"layer_{count}.png"
             layer_id.to_svg(filename,style = svg_style)
             filenames.append(filename)
-            plt.close(figa)
+            #plt.close(figa)
 
         return filenames
 
