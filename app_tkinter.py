@@ -43,7 +43,7 @@ class GDS:
                 scaled_polygon = poly(list(zip(scaled[0], scaled[1])))
                 x, y = scaled_polygon.exterior.xy
                 plt.fill(x, y, color='red') """
-            svg_style = {(1,0): {'fill':'blue','style':'blue'}}
+            svg_style = {(1,0): {'fill':'black','style':'black'}}
 
             count += 1
             filename = f"layer_{count}.svg"
