@@ -29,7 +29,7 @@ class GDS:
         ysize = 1
 
         for layer_id, coords in polys.items():
-            figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
+            """ figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
             ax = figa.add_subplot()
             ax.set_xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
             ax.set_ylim(bound1[0][1] - bound[0][1], bound1[1][1] - bound[0][1])
@@ -42,11 +42,12 @@ class GDS:
                 scaled = np.round(adjust / np.array([[xsize, ysize]]).transpose())
                 scaled_polygon = poly(list(zip(scaled[0], scaled[1])))
                 x, y = scaled_polygon.exterior.xy
-                plt.fill(x, y, color='red')
+                plt.fill(x, y, color='red') """
+            svg_style = {(1,0): 'fill':'blue','style':'blue'}
 
             count += 1
             filename = f"layer_{count}.png"
-            plt.savefig(filename, dpi=1, bbox_inches='tight', pad_inches=0.1)
+            layer_id.to_svg(filename,style = svg_style)
             filenames.append(filename)
             plt.close(figa)
 
