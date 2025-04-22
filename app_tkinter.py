@@ -52,12 +52,13 @@ class GDS:
                 for layer,typ in a
                 if layer != sub
                 }
+                count += 1
+                filename = f"layer_{count}.svg"
+                layer_id.write_svg(filename,style = style)
+                filenames.append(filename)
             svg_style = {(1,0): {'fill':'black','style':'black'}}
 
-            count += 1
-            filename = f"layer_{count}.svg"
-            layer_id.write_svg(filename,style = style)
-            filenames.append(filename)
+            
             #plt.close(figa)
 
         return filenames
