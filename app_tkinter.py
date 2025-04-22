@@ -49,7 +49,7 @@ class GDS:
             svg_style = {(1,0): {'fill':'black','style':'black'}}
 
             count += 1
-            filename = f"layer_{layer_id}.svg"
+            filename = f"layer_{count}.svg"
             layer_id.write_svg(filename,style = svg_style)
             filenames.append(filename)
             #plt.close(figa)
