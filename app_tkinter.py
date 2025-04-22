@@ -85,14 +85,14 @@ class GDS:
             matlist.append(boolmat)
             count += 1
         for b in matlist:
-            d = ndimage.binary_fill_holes(b).astype(int)
-            samp = np.broadcast_to(d, (5, d.shape[0], d.shape[1]))
-       #     sampout = np.broadcast_to(b, (5, b.shape[0], b.shape#[1]))
-            samplist += (samp,)
-      #      outline += (sampout,)
-            sample = np.concatenate(samplist, axis=0)
-      #  sampleout = np.concatenate(outline, axis=0)
-        return sample#, sampleout
+            #d = ndimage.binary_fill_holes(b).astype(int)
+            #samp = np.broadcast_to(d, (5, d.shape[0], d.shape[1]))
+            sampout = np.broadcast_to(b, (5, b.shape[0], b.shape[1]))
+            #samplist += (samp,)
+            outline += (sampout,)
+            #sample = np.concatenate(samplist, axis=0)
+            sampleout = np.concatenate(outline, axis=0)
+        return sampleout
 
 
 class GraphSample(FigureCanvasTkAgg):
