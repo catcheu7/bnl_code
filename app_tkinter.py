@@ -6,7 +6,7 @@ from shapely.geometry import Polygon as poly
 from scipy import ndimage
 from tkinter import Tk, Label, Button, Entry, filedialog, Frame, messagebox, Toplevel
 from svglib.svglib import svg2rlg
-from cairosvg import svg2png
+#from cairosvg import svg2png
 
 
 class GDS:
@@ -50,7 +50,7 @@ class GDS:
             svg_style = {(1,0): {'fill':'black','style':'black'}}
 
             count += 1
-            filename = f"C:\\Users\\ccheu\\layer_{count}.svg"
+            filename = f"layer_{count}.svg"
             layer_id.write_svg(filename,style = svg_style)
             filenames.append(filename)
             #plt.close(figa)
@@ -65,9 +65,10 @@ class GDS:
         samplist = ()
         outline = ()
         matlist = []
+        os.chdir("C:\\Users\\ccheu")
         for filename in layers:
             print(type(filename))
-            matimg = svg2png(filename) # Assuming grayscale image
+            matimg = svg2rlg(filename) # Assuming grayscale image
             boolmat = (matimg != 1).astype(int)
             matlist.append(boolmat)
         for b in matlist:
