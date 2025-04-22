@@ -53,6 +53,7 @@ class GDS:
                 for layer,typ in a
                 if layer != sub
                 }
+                print(style)
                 count += 1
                 filename = f"layer_{count}.svg"
                 layer_id.write_svg(filename,style = style)
@@ -75,7 +76,7 @@ class GDS:
         os.chdir("C:\\Users\\ccheu")
         for filename in layers:
             print(filename)
-            matimg = svg2rlg(str("C:\\Users\\ccheu" + filename)) # Assuming grayscale image
+            matimg = svg2rlg(filename)) # Assuming grayscale image
             boolmat = (matimg != 1).astype(int)
             matlist.append(boolmat)
         for b in matlist:
