@@ -7,6 +7,7 @@ from scipy import ndimage
 from tkinter import Tk, Label, Button, Entry, filedialog, Frame, messagebox, Toplevel
 from svglib.svglib import svg2rlg
 import os
+import pycairo
 #from cairosvg import svg2png
 
 
