@@ -6,6 +6,7 @@ from shapely.geometry import Polygon as poly
 from scipy import ndimage
 from tkinter import Tk, Label, Button, Entry, filedialog, Frame, messagebox, Toplevel
 from svglib.svglib import svg2rlg
+from cairosvg import svg2png
 
 
 class GDS:
@@ -66,7 +67,7 @@ class GDS:
         matlist = []
         for filename in layers:
             print(type(filename))
-            matimg = svg2rlg(filename, False) # Assuming grayscale image
+            matimg = svg2png(filename) # Assuming grayscale image
             boolmat = (matimg != 1).astype(int)
             matlist.append(boolmat)
         for b in matlist:
