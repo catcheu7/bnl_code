@@ -56,7 +56,7 @@ class GDS:
 
             count += 1
             filename = f"layer_{count}.svg"
-            layer_id.write_svg(filename,style = svg_style)
+            layer_id.write_svg(filename,style = style)
             filenames.append(filename)
             #plt.close(figa)
 
