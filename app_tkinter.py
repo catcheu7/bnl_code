@@ -7,7 +7,7 @@ from scipy import ndimage
 from tkinter import Tk, Label, Button, Entry, filedialog, Frame, messagebox, Toplevel
 from svglib.svglib import svg2rlg
 import os
-import pycairo
+import cairo
 #from cairosvg import svg2png
 
 
@@ -77,8 +77,10 @@ class GDS:
         os.chdir("C:\\Users\\ccheu")
         for filename in layers:
             print(filename)
-            matimg = svg2rlg(filename) # Assuming grayscale image
-            boolmat = (matimg != 1).astype(int)
+            matimg = cairo.SVGSurface(filename) # Assuming grayscale image
+            mat2 = matimg.write_to_png('layer'+count+'.png')
+            matplot = plt.imread('layer'+count+'.png')
+            boolmat = (matplot != 1).astype(int)
             matlist.append(boolmat)
         for b in matlist:
             d = ndimage.binary_fill_holes(b).astype(int)
