@@ -63,7 +63,7 @@ class GDS:
         outline = ()
         matlist = []
         for filename in layers:
-            matimg = plt.imread(filename)[:, :, 0]  # Assuming grayscale image
+            matimg = svg2rlg(filename) # Assuming grayscale image
             boolmat = (matimg != 1).astype(int)
             matlist.append(boolmat)
         for b in matlist:
