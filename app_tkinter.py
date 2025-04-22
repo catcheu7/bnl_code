@@ -16,10 +16,10 @@ class GDS:
         polys = cell.get_polygons(by_spec=True)
         bound = cell.get_bounding_box()
         diff = bound[:, None] - bound[None, :]
-        return bound, diff, polys
+        return bound, diff, polys, test
 
     @staticmethod
-    def layered(diff, bound, bound1, polys):
+    def layered(diff, bound, bound1, polys,test):
         """
         Generates 2D cross-sections for each layer, saves them as images, and returns the filenames.
         """
@@ -28,7 +28,7 @@ class GDS:
         xsize = 1
         ysize = 1
 
-        for layer_id, coords in polys.items():
+        for layer_id in test.toplevel():
             """ figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
             ax = figa.add_subplot()
             ax.set_xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
@@ -46,7 +46,7 @@ class GDS:
             svg_style = {(1,0): {'fill':'black','style':'black'}}
 
             count += 1
-            filename = f"layer_{count}.svg"
+            filename = f"layer_{layer_id}.svg"
             layer_id.write_svg(filename,style = svg_style)
             filenames.append(filename)
             #plt.close(figa)
@@ -159,12 +159,12 @@ class MainWindow:
             messagebox.showerror("Error", "Invalid input for bounds!")
             return
 
-        bound, diff, polys = GDS.loadgds(file_path)
+        bound, diff, polys,test = GDS.loadgds(file_path)
         bound1 = [(x1, y1), (x2, y2)]
         diff1 = [(x2 - x1), (y2 - y1)]
 
         # Call the layered function to generate and save the layers
-        filenames = GDS.layered(diff, bound, bound1, polys)
+        filenames = GDS.layered(diff, bound, bound1, polys,test)
 
         # Pass the filenames to loadsample and get the sample
         sample, _ = GDS.loadsample(filenames)
