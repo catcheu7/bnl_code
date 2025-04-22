@@ -5,6 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from shapely.geometry import Polygon as poly
 from scipy import ndimage
 from tkinter import Tk, Label, Button, Entry, filedialog, Frame, messagebox, Toplevel
+from svglib.svglib import svg2rlg
 
 
 class GDS:
