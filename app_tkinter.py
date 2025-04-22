@@ -76,7 +76,7 @@ class GDS:
         os.chdir("C:\\Users\\ccheu")
         for filename in layers:
             print(filename)
-            matimg = svg2rlg(filename)) # Assuming grayscale image
+            matimg = svg2rlg(filename) # Assuming grayscale image
             boolmat = (matimg != 1).astype(int)
             matlist.append(boolmat)
         for b in matlist:
