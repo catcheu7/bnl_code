@@ -186,7 +186,7 @@ class MainWindow:
         filenames = GDS.layered(diff, bound, bound1, polys,test)
 
         # Pass the filenames to loadsample and get the sample
-        sample, _ = GDS.loadsample(filenames)
+        sample = GDS.loadsample(filenames)
 
         # Open the 3D voxel graph in a new window
         GraphWin(sample, master=self.root)
