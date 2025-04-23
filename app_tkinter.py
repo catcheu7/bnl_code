@@ -67,7 +67,7 @@ class GDS:
         return filenames
 
     @staticmethod
-    def loadsample(layers):
+    def loadsample(layers,x1,x2,y1,y2):
         """
         Processes the layers into a sample and its outline.
         """
@@ -82,6 +82,7 @@ class GDS:
             mat2 = matimg.write_to_png('layer'+str(count)+'.png')
             matplot = plt.imread('layer'+str(count)+'.png')[:,:,-1]
             boolmat = (matplot != 1).astype(int)
+            boolsub = boolmat[x1:x2,y1:y2]
             matlist.append(boolmat)
             count += 1
         for b in matlist:
