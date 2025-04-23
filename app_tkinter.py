@@ -83,7 +83,7 @@ class GDS:
             matplot = plt.imread('layer'+str(count)+'.png')[:,:,-1]
             boolmat = (matplot != 1).astype(int)
             boolsub = boolmat[x1:x2,y1:y2]
-            matlist.append(boolmat)
+            matlist.append(boolsub)
             count += 1
         for b in matlist:
             #d = ndimage.binary_fill_holes(b).astype(int)
@@ -187,7 +187,7 @@ class MainWindow:
         filenames = GDS.layered(diff, bound, bound1, polys,test)
 
         # Pass the filenames to loadsample and get the sample
-        sample = GDS.loadsample(filenames)
+        sample = GDS.loadsample(filenames,x1,x2,y1,y2)
 
         # Open the 3D voxel graph in a new window
         GraphWin(sample, master=self.root)
