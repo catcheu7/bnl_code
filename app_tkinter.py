@@ -49,7 +49,12 @@ class GDS:
                 plt.fill(x, y, color='red') """
             a,b = layer_id.get_svg_classes()
             layers = set(layer for layer,typ in a.union(b))
-            for sub in layers:
+            count += 1
+            filename = f"layer_{count}.svg"
+            svg_style = {(sub,0): {'fill':'black','style':'black'}}
+            layer_id.write_svg(filename,style = svg_style)#,style = style)
+            filenames.append(filename)
+            """ for sub in layers:
                 # style = {(layer,typ) : {"fill" : "#00000000","style-opacity" : "0"}
                 # for layer,typ in a
                 # if layer != sub
@@ -60,7 +65,7 @@ class GDS:
                 filename = f"layer_{count}.svg"
                 svg_style = {(sub,0): {'fill':'black','style':'black'}}
                 layer_id.write_svg(filename,style = svg_style)#,style = style)
-                filenames.append(filename)
+                filenames.append(filename) """
             
 
             
