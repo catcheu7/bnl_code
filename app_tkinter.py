@@ -51,7 +51,7 @@ class GDS:
             layers = set(layer for layer,typ in a.union(b))
             count += 1
             filename = f"layer_{count}.svg"
-            svg_style = {(1,0): {'fill':'black','style':'black'}}
+            svg_style = {(1,0): {'fill':'#0000FF','style':'black'}}
             layer_id.write_svg(filename,style = svg_style)#,style = style)
             filenames.append(filename)
             """ for sub in layers:
