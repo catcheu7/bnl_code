@@ -50,15 +50,15 @@ class GDS:
             a,b = layer_id.get_svg_classes()
             layers = set(layer for layer,typ in a.union(b))
             for sub in layers:
-                style = {(layer,typ) : {"fill" : "#00000000","style-opacity" : "0"}
-                for layer,typ in a
-                if layer != sub
-                else {"fill" : "#00000000","style-opacity" : "0.5"}
-                }
-                print(style)
+                # style = {(layer,typ) : {"fill" : "#00000000","style-opacity" : "0"}
+                # for layer,typ in a
+                # if layer != sub
+                # else {"fill" : "#00000000","style-opacity" : "0.5"}
+                # }
+                # print(style)
                 count += 1
                 filename = f"layer_{count}.svg"
-                layer_id.write_svg(filename,style = style)
+                layer_id.write_svg(filename)#,style = style)
                 filenames.append(filename)
             svg_style = {(1,0): {'fill':'black','style':'black'}}
 
