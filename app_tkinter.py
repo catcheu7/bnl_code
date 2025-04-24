@@ -50,9 +50,10 @@ class GDS:
             a,b = layer_id.get_svg_classes()
             layers = set(layer for layer,typ in a.union(b))
             for sub in layers:
-                style = {(layer,typ) : {"fill-opacity" : "0","style-opacity" : "0"}
+                style = {(layer,typ) : {"fill" : "#00000000","style-opacity" : "0"}
                 for layer,typ in a
                 if layer != sub
+                else {"fill" : "#00000000","style-opacity" : "0.5"}
                 }
                 print(style)
                 count += 1
