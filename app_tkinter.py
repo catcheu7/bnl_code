@@ -81,7 +81,7 @@ class GDS:
             matimg = cairo.SVGSurface(filename,800,800) # Assuming grayscale image
             mat2 = matimg.write_to_png('layer'+str(count)+'.png')
             matplot = plt.imread('layer'+str(count)+'.png')[:,:,-1]
-            boolmat = (matplot != 1).astype(int)
+            boolmat = (matplot != 0).astype(int)
             boolsub = boolmat[int(x1):int(x2),int(y1):int(y2)]
             matlist.append(boolsub)
             count += 1
