@@ -54,6 +54,7 @@ class GDS:
             svg_style = {(1,0): {'fill':'#0000FF','style':'black'}}
             layer_id.write_svg(filename,style = svg_style)#,style = style)
             filenames.append(filename)
+            plt.show(filename)
             """ for sub in layers:
                 # style = {(layer,typ) : {"fill" : "#00000000","style-opacity" : "0"}
                 # for layer,typ in a
