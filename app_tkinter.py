@@ -32,7 +32,7 @@ class GDS:
         xsize = 1
         ysize = 1
 
-        for layer_id in test.top_level()[0]:
+        for layer_id in test.top_level():
             """ figa = plt.figure(figsize=(diff[1][0][0] / 100, diff[1][0][1] / 100), frameon=True)
             ax = figa.add_subplot()
             ax.set_xlim(bound1[0][0] - bound[0][0], bound1[1][0] - bound[0][0])
